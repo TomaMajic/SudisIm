@@ -1,0 +1,18 @@
+﻿<Window x:Class="SudisIm.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudisIm.Desktop"
+        mc:Ignorable="d"
+        Title="SudisIm" Height="300" Width="480">
+    <Grid Margin="0,0,0,-5">
+        <Label Content="Login" HorizontalAlignment="Center" Margin="80,40,80,0" VerticalAlignment="Top" Width="140" FontSize="24" FontWeight="Bold" FontStyle="Italic" HorizontalContentAlignment="Center" RenderTransformOrigin ="0.28,-0.405"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="201,190,0,52" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,105,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="181,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="134,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="115,147,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
