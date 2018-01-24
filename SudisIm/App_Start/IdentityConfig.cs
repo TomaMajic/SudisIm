@@ -98,7 +98,7 @@ namespace SudisIm
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser applicationUser)
         {
-            return applicationUser.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return applicationUser.GenerateUserIdentityAsync(NHibernateHelper.userManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)

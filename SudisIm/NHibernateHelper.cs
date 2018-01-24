@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Microsoft.AspNet.Identity;
@@ -11,8 +7,8 @@ using NHibernate;
 using NHibernate.AspNet.Identity;
 using NHibernate.AspNet.Identity.Helpers;
 using NHibernate.Tool.hbm2ddl;
+using SudisIm.DAL.Mappings;
 using SudisIm.Model.Models;
-using SudisIm.Models;
 
 namespace SudisIm
 {
@@ -31,7 +27,7 @@ namespace SudisIm
         {
             // this assumes you are using the default Identity model of "ApplicationUser"
             var myEntities = new[] {
-                typeof(ApplicationUser)
+                typeof(ApplicationUserMap)
             };
 
             //creating database 
@@ -39,7 +35,9 @@ namespace SudisIm
 
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CustomerMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CityMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TeamMap>())               
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<GameMap>())
                 .ExposeConfiguration(cfg =>
                 {
 

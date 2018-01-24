@@ -5,15 +5,17 @@ namespace SudisIm.Model.Models
 {
     public class Game
     {
-        public long Id { get; set; }
-        public long HomeTeamId { get; set; }
-        public long AwayTeamId { get; set; }
-        public DateTime StartTime { get; set; }
-        public ICollection<Referee> Referees { get; set; }
-        public string Address { get; set; }
-        public long CityId { get; set; }
+        public virtual long Id { get; set; }
+        public virtual long HomeTeamId { get; set; }
+        public virtual Team HomeTeam { get; set; }
+        public virtual long AwayTeamId { get; set; }
+        public virtual Team AwayTeam { get; set; }
+        public virtual DateTime StartTime { get; set; }
+        public virtual ICollection<Referee> Referees { get; set; }
+        public virtual string Address { get; set; }
+        public virtual long CityId { get; set; }
 
-        // TODO: navigacijski propertyi za timove i city
+        public virtual City City { get; set; }
 
     }
 }
