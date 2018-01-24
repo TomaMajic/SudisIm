@@ -7,6 +7,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using NHibernate;
 using NHibernate.AspNet.Identity;
+using SudisIm.DAL.NHibernate;
 using SudisIm.Model.Models;
 using SudisIm.Models;
 
@@ -42,8 +43,7 @@ namespace SudisIm
         {
             var manager = new ApplicationUserManager(
                 new UserStore<ApplicationUser>(NHibernateHelper.Instance
-                    .OpenSession())); //new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ISession>()));
-            // Configure validation logic for usernames
+                    .OpenSession()));
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
@@ -98,7 +98,7 @@ namespace SudisIm
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser applicationUser)
         {
-            return applicationUser.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return applicationUser.GenerateUserIdentityAsync(NHibernateHelper.userManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)

@@ -8,6 +8,9 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
+using SudisIm.DAL.NHibernate;
+using SudisIm.DAL.Repositories;
+using SudisIm.Model.Models;
 using SudisIm.Models;
 
 namespace SudisIm.Controllers
@@ -17,24 +20,26 @@ namespace SudisIm.Controllers
         private ISessionFactory _sessionFactory;
         public ActionResult Index()
         {
-            ////creating database 
-            ////string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            ////CreateDatabase(connectionString);
-            ////Console.WriteLine("Database Created sucessfully");
 
-            ////creating a object of customer
-            //Customer customer = new Customer
-            //{
-            //    CustomerId = 2,
-            //    FirstName = "Jalpesh2",
-            //    LastName = "Vadgama2"
-            //};
+            // Test referee repository
+            var refRepo = new RefereeRepository();
+            var city = new City()
+            {
+                Name = "Cudni name"
+            };
+            var session = NHibernateHelper.Instance.OpenSession();
+            session.Save(city);
 
-            ////saving customer in database.
-            //using (ISession session = NHibernateHelper.Instance.OpenSession())
-            //    session.Save(customer);
+            var referee = new Referee()
+            {
+                Address = "ulica bla bla",
+                Description = "bla bla opis",
+                FirstName = "ime",
+                LastName = "prezime",
+                City = city
 
-            //Console.WriteLine("Customer Saved");
+            };
+            refRepo.AddReferee(referee);
             return View();
         }
 

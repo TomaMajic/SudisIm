@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using NHibernate;
 using NHibernate.AspNet.Identity;
 using NHibernate.AspNet.Identity.Helpers;
 using NHibernate.Tool.hbm2ddl;
+using SudisIm.DAL.Mappings;
 using SudisIm.Model.Models;
-using SudisIm.Models;
 
-namespace SudisIm
+namespace SudisIm.DAL.NHibernate
 {
     public sealed class NHibernateHelper
     {
         private static readonly ISessionFactory _instance = CreateSessionFactory();
         public static  UserManager<ApplicationUser> userManager;
-        public static SignInManager<ApplicationUser, string> signInManager;
+        //public static SignInManager<ApplicationUser, string> signInManager;
         
         public static ISessionFactory Instance
         {
@@ -39,7 +34,9 @@ namespace SudisIm
 
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CustomerMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CityMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TeamMap>())               
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<GameMap>())
                 .ExposeConfiguration(cfg =>
                 {
 

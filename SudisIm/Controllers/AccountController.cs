@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using NHibernate.AspNet.Identity;
+using SudisIm.DAL.NHibernate;
 using SudisIm.Model.Models;
 using SudisIm.Models;
 
