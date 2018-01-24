@@ -43,8 +43,7 @@ namespace SudisIm
         {
             var manager = new ApplicationUserManager(
                 new UserStore<ApplicationUser>(NHibernateHelper.Instance
-                    .OpenSession())); //new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ISession>()));
-            // Configure validation logic for usernames
+                    .OpenSession()));
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
