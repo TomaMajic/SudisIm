@@ -2,7 +2,6 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using NHibernate;
 using NHibernate.AspNet.Identity;
 using NHibernate.AspNet.Identity.Helpers;
@@ -10,13 +9,13 @@ using NHibernate.Tool.hbm2ddl;
 using SudisIm.DAL.Mappings;
 using SudisIm.Model.Models;
 
-namespace SudisIm
+namespace SudisIm.DAL.NHibernate
 {
     public sealed class NHibernateHelper
     {
         private static readonly ISessionFactory _instance = CreateSessionFactory();
         public static  UserManager<ApplicationUser> userManager;
-        public static SignInManager<ApplicationUser, string> signInManager;
+        //public static SignInManager<ApplicationUser, string> signInManager;
         
         public static ISessionFactory Instance
         {
@@ -27,7 +26,7 @@ namespace SudisIm
         {
             // this assumes you are using the default Identity model of "ApplicationUser"
             var myEntities = new[] {
-                typeof(ApplicationUserMap)
+                typeof(ApplicationUser)
             };
 
             //creating database 

@@ -55,6 +55,7 @@
       <HintPath>..\packages\Remotion.Linq.EagerFetching.2.1.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappings\ApplicationUserMap.cs" />
     <Compile Include="Mappings\CityMap.cs" />
     <Compile Include="Mappings\RefereeMap.cs" />
     <Compile Include="Mappings\GameMap.cs" />
     <Compile Include="Mappings\TeamMap.cs" />
+    <Compile Include="NHibernate\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />
   </ItemGroup>
