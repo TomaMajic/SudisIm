@@ -20,14 +20,35 @@ namespace SudisIm.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool shutDownApplication = true;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // ako je registrirani korisnik administrator
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Top = this.Top;
+            adminWindow.Left = this.Left;
+            App.Current.MainWindow = adminWindow;
+            shutDownApplication = false;
+            this.Close();
+            adminWindow.Show();
 
+            // ako je registrirani korisnik sudac
+            //RefereeWindow refereeWindow = new RefereeWindow();
+            //refereeWindow.Show();
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (shutDownApplication == true)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }
