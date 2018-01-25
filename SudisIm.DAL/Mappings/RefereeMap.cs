@@ -14,6 +14,7 @@ namespace SudisIm.DAL.Mappings
             Map(r => r.Address);
             Map(r => r.Description);
             References(r => r.City);
+            References(r => r.Licence);
         }
     }
 }

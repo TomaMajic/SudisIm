@@ -2,10 +2,10 @@
 {
     public class Notification
     {
-        public long Id { get; set; }
-        public bool IsOpened { get; set; }
-        public long RefereeId { get; set; }
-        public long GameId { get; set; }
-        public string Text { get; set; }
+        public virtual long Id { get; set; }
+        public virtual bool IsOpened { get; set; }
+        public virtual Referee Referee { get; set; }
+        public virtual Game Game { get; set; }
+        public virtual string Text { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace SudisIm.DAL.Repositories
         public Referee AddReferee(Referee referee)
         {
             session.SaveOrUpdate(referee);
-
+            session.Flush();
             return referee;
         }
     }
