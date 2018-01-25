@@ -37,8 +37,13 @@ namespace SudisIm.Desktop
             this.Close();
             adminWindow.Show();
 
-            // ako je registrirani korisnik sudac
+            //// ako je registrirani korisnik sudac
             //RefereeWindow refereeWindow = new RefereeWindow();
+            //refereeWindow.Top = this.Top;
+            //refereeWindow.Left = this.Left;
+            //App.Current.MainWindow = refereeWindow;
+            //this.shutDownApplication = false;
+            //this.Close();
             //refereeWindow.Show();
 
         }

@@ -26,7 +26,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="77" Click="Logout_Button_Click"/>
-        <Button Content="Uredi korisnički račun" Margin="0,2,81,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+        <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Logout_Button_Click"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Button_Click_2"/>
     </Grid>
 </Window>

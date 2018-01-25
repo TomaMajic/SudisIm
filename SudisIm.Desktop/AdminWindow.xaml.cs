@@ -58,5 +58,11 @@ namespace SudisIm.Desktop
             this.Close();
             mainWindow.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            EditAdminAccountWindow editAdminAccountWindow = new EditAdminAccountWindow();
+            editAdminAccountWindow.Show();
+        }
     }
 }

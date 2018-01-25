@@ -15,13 +15,16 @@
                     </Viewbox>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Odsutnost">
                 <Grid Background="#FFE5E5E5">
 
                 </Grid>
             </TabItem>
+
         </TabControl>
+        <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Button_Click"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
 
     </Grid>
 </Window>

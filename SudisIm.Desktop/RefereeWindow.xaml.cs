@@ -19,6 +19,7 @@ namespace SudisIm.Desktop
     /// </summary>
     public partial class RefereeWindow : Window
     {
+        private bool shutDownApplication = true;
         public RefereeWindow()
         {
             InitializeComponent();
@@ -26,7 +27,21 @@ namespace SudisIm.Desktop
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (shutDownApplication == true)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Top = this.Top;
+            mainWindow.Left = this.Left;
+            App.Current.MainWindow = mainWindow;
+            this.shutDownApplication = false;
+            this.Close();
+            mainWindow.Show();
         }
     }
 }
