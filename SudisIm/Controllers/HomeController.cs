@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
 using SudisIm.Model.Models;
-using SudisIm.Models;
 
 namespace SudisIm.Controllers
 {
@@ -21,39 +14,66 @@ namespace SudisIm.Controllers
         public ActionResult Index()
         {
 
-            // Test referee repository
-            var refRepo = new RefereeRepository();
+
             var city = new City()
             {
                 Name = "Cudni name"
             };
             var session = NHibernateHelper.Instance.OpenSession();
             session.Save(city);
-
+            var team1 = new Team()
+            {
+                Name = "test tim1",
+                City = city
+            };
+            var team2 = new Team()
+            {
+                Name = "test tim2",
+                City = city
+            };
+            var licence1 = new Licence()
+            {
+                Name = "licence1",
+                Priority = 1
+            };
+            session.Save(team1);
+            session.Save(team2);
+            session.Save(licence1);
+            // Test referee repository
+            var refRepo = new RefereeRepository();
             var referee = new Referee()
             {
                 Address = "ulica bla bla",
                 Description = "bla bla opis",
-                FirstName = "ime",
+                FirstName = "ime suca 1",
                 LastName = "prezime",
-                City = city
+                City = city,
+                Licence = licence1
 
             };
+
             refRepo.AddReferee(referee);
+            
+            var gameRepo = new GameRepository(session);
+            var game = new Game()
+            {
+                Address = "adresa",
+                City = city,
+                AwayTeam = team1,
+                HomeTeam = team2,
+                StartTime = DateTime.Now,
+                Referees =  new List<Referee>() { referee}
+            };
+
+            gameRepo.AddGame(game);
+            var notification = new Notification()
+            {
+                Referee = referee,
+                Game = game,
+                Text = "text notifikacije"
+            };
+            session.Save(notification);
             return View();
-        }
-
-        void CreateDatabase(string connectionString)
-        {
-            var configuration = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CustomerMap>())
-                .BuildConfiguration();
-
-            var exporter = new SchemaExport(configuration);
-            exporter.Execute(true, true, false);
-
-            _sessionFactory = configuration.BuildSessionFactory();
         }
 
         public ActionResult About()

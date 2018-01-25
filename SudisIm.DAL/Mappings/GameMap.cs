@@ -13,7 +13,7 @@ namespace SudisIm.DAL.Mappings
             References(g => g.City);
             References(g => g.HomeTeam, "HomeTeamId");
             References(g =>g.AwayTeam, "AwayTeamId");
-            HasMany(g => g.Referees);
+            HasManyToMany(g => g.Referees).Cascade.SaveUpdate();
         }
     }
 }
