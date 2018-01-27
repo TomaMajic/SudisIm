@@ -60,6 +60,7 @@
     <Compile Include="RefereeWindow.xaml.cs">
       <DependentUpon>RefereeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegexValidationRule.cs" />
     <Page Include="AddGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +128,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SudisIm.DAL\SudisIm.DAL.csproj">
+      <Project>{9C613D63-4D7E-428D-94F4-5D8D70165A7B}</Project>
+      <Name>SudisIm.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudisIm.Model\SudisIm.Model.csproj">
+      <Project>{AEEF7C1D-3481-4539-A83F-D0C3709B4554}</Project>
+      <Name>SudisIm.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

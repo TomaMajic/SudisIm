@@ -32,6 +32,8 @@ namespace SudisIm.DAL.NHibernate
             //creating database 
             string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
+            //string connectionString = "Data Source = (localhost)\\MSSQLSERVER2016; Initial Catalog = SudisImTest; Integrated Security = True";
+
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CityMap>())
