@@ -20,6 +20,11 @@ namespace SudisIm.DAL.Repositories
             this.session = session;
         }
 
+        public Team GetTeamById(long teamId)
+        {
+            return this.session.Get<Team>(teamId);
+        }
+
         public ICollection<Team> GetTeams()
         {
             return this.session.Query<Team>().ToList();
