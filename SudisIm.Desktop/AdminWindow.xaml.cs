@@ -27,6 +27,7 @@ namespace SudisIm.Desktop
             adminController = new AdminController();
             InitializeComponent();
             adminController.LoadReferees(this.suciDataGrid);
+            adminController.LoadGames(this.gameDataGrid);
         }
 
         private void Add_Referee_Button_Click(object sender, RoutedEventArgs e)

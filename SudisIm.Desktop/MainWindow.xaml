@@ -11,7 +11,7 @@
         <Label Content="Login" Margin="120,25,120,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" FontStyle="Italic" HorizontalContentAlignment="Center" RenderTransformOrigin ="0.28,-0.405"/>
 
         <Label Content="Email:" HorizontalAlignment="Left" Margin="110,90,0,0" VerticalAlignment="Top"/>
-        <TextBox Height="23" Margin="165,90,85,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top"/>
+        <TextBox Height="23" Margin="165,90,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
 
         <Label Content="Password:" HorizontalAlignment="Left" Margin="89,120,0,0" VerticalAlignment="Top"/>
         <PasswordBox HorizontalAlignment="Left" Height="23" Margin="165,120,0,0" VerticalAlignment="Top" Width="130"/>
