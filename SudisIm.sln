@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Model", "SudisIm.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.DAL", "SudisIm.DAL\SudisIm.DAL.csproj", "{9C613D63-4D7E-428D-94F4-5D8D70165A7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Tests", "SudisIm.Tests\SudisIm.Tests.csproj", "{047A50AF-E231-4AF0-A2E1-5629A06817E8}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Desktop", "SudisIm.Desktop\SudisIm.Desktop.csproj", "{E9A118E9-0028-4299-9BE3-890056BE5D0B}"
 EndProject
 Global
@@ -29,6 +31,10 @@ Global
 		{9C613D63-4D7E-428D-94F4-5D8D70165A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C613D63-4D7E-428D-94F4-5D8D70165A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C613D63-4D7E-428D-94F4-5D8D70165A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047A50AF-E231-4AF0-A2E1-5629A06817E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047A50AF-E231-4AF0-A2E1-5629A06817E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047A50AF-E231-4AF0-A2E1-5629A06817E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047A50AF-E231-4AF0-A2E1-5629A06817E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
