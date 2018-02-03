@@ -1,0 +1,59 @@
+﻿<Window x:Class="SudisIm.Desktop.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudisIm.Desktop"
+        mc:Ignorable="d"
+        Title="Administrator" Height="600" Width="800" Closing="Window_Closing">
+    <Grid>
+        <TabControl Margin="0,0,0,0">
+            <TabItem Header="Kalendar">
+                <Grid Background="#FFE5E5E5">
+                    <Viewbox>
+                        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="200"/>
+                    </Viewbox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Suci">
+                <Grid Background="#FFE5E5E5" Margin="1,0,0,0">
+                    <Button Content="Dodaj novog suca" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" Width="136" Click="Add_Referee_Button_Click"/>
+                    <DataGrid Name="suciDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+                        
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"  Header="Prezime" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
+                            <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Kontakt"/>
+                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Description}"/>
+                        </DataGrid.Columns>
+                        
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Utakmice">
+                <Grid Background="#FFE5E5E5" Margin="1,0,0,0">
+                    <Button Content="Dodaj novu utakmicu" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" Width="133" Click="Add_Game_Button_Click"/>
+
+                    <DataGrid Name="GameDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"  Header="Domaći" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Width="*" Header="Gosti" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Width="*" Header="Datum" Binding="{Binding Address}"/>
+                            <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding City.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Mjesto"/>
+                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Broj sudaca" Binding="{Binding Description}"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Logout_Button_Click"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Edit_Admin_Account_Button_Click"/>
+    </Grid>
+</Window>
