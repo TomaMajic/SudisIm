@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudisIm.Desktop.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,24 +21,27 @@ namespace SudisIm.Desktop
     public partial class AdminWindow : Window
     {
         private bool shutDownApplication = true;
+        private AdminController adminController; 
         public AdminWindow()
         {
+            adminController = new AdminController();
             InitializeComponent();
+            adminController.LoadReferees(this.suciDataGrid);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Referee_Button_Click(object sender, RoutedEventArgs e)
         {
-            // otvori formu za dodavanje novog sudca
-            AddReferee addReferee = new AddReferee();
-            addReferee.Show();
-            addReferee.Focus();
+            adminController.OpenAddRefereeForm();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Add_Game_Button_Click(object sender, RoutedEventArgs e)
         {
-            AddGame addGame = new AddGame();
-            addGame.Focus();
-            addGame.Show();
+            adminController.OpenAddGameForm();
+        }
+
+        private void Edit_Admin_Account_Button_Click(object sender, RoutedEventArgs e)
+        {
+            adminController.OpenEditAdminAccountForm();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -57,12 +61,6 @@ namespace SudisIm.Desktop
             shutDownApplication = false;
             this.Close();
             mainWindow.Show();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            EditAdminAccountWindow editAdminAccountWindow = new EditAdminAccountWindow();
-            editAdminAccountWindow.Show();
         }
     }
 }

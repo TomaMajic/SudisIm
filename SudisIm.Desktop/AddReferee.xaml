@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SudisIm.Desktop"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="AddReferee" Height="500" Width="350">
+
     <Grid>
         <Label Content="Dodaj novog suca" HorizontalContentAlignment="Center" Margin="40,25,40,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic" Height="34"/>
 
@@ -39,7 +39,7 @@
 
         <Label Content="Opis:" Margin="83,360,215,0" VerticalAlignment="Top"/>
         <TextBox Name="DescriptionTextBox" Margin="130,360,30,0" TextWrapping="Wrap" Text=""  Height="23" VerticalAlignment="Top"/>
-        
+
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="220,415,0,0" VerticalAlignment="Top" Width="82" Height="27" Click="Add_Button_Click"/>
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="120,415,0,0" VerticalAlignment="Top" Width="81" Height="27" Click="Cancel_Button_Click"/>
 

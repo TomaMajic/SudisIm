@@ -54,13 +54,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="EditAdminAccountWindow.xaml.cs">
       <DependentUpon>EditAdminAccountWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RefereeWindow.xaml.cs">
       <DependentUpon>RefereeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegexValidationRule.cs" />
+    <Compile Include="ViewModels\RefereeViewModel.cs" />
     <Page Include="AddGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

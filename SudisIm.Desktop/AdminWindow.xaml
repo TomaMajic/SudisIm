@@ -15,18 +15,31 @@
                     </Viewbox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Sudci">
+            <TabItem Header="Suci">
                 <Grid Background="#FFE5E5E5" Margin="1,0,0,0">
-                    <Button Content="Dodaj novog sudca" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" Width="136" Click="Button_Click"/>
+                    <Button Content="Dodaj novog suca" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" Width="136" Click="Add_Referee_Button_Click"/>
+                    <DataGrid Name="suciDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+                        
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"  Header="Prezime" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
+                            <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Kontakt"/>
+                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Description}"/>
+                        </DataGrid.Columns>
+                        
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Utakmice">
                 <Grid Background="#FFE5E5E5" Margin="1,0,0,0">
-                    <Button Content="Dodaj novu utakmicu" HorizontalAlignment="Left" Margin="36,17,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click_1"/>
+                    <Button Content="Dodaj novu utakmicu" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" Width="133" Click="Add_Game_Button_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
         <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Logout_Button_Click"/>
-        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Button_Click_2"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Edit_Admin_Account_Button_Click"/>
     </Grid>
 </Window>
