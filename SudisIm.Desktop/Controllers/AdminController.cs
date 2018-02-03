@@ -1,5 +1,6 @@
 ﻿using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
+using SudisIm.Desktop.ViewModels;
 using SudisIm.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -137,6 +138,17 @@ namespace SudisIm.Desktop.Controllers
 
         internal void LoadGames(DataGrid gamesDataGrid)
         {
+            List<Game> games = _gameRepository.GetGames().ToList();
+            foreach(Game game in games)
+            {
+                GameViewModel gameViewModel = new GameViewModel();
+                gameViewModel.HomeTeam = game.HomeTeam.Name;
+                gameViewModel.AwayTeam = game.AwayTeam.Name;
+                gameViewModel.Address = game.Address;
+                gameViewModel.City = game.City.Name;
+                gameViewModel.StartTime = game.GetFormatedStartTime();
+                gamesDataGrid.Items.Add(gameViewModel);
+            }
         }
     }
 }

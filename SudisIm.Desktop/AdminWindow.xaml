@@ -40,12 +40,12 @@
                     <DataGrid Name="gameDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="*"  Header="Domaći" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Width="*" Header="Gosti" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Width="*" Header="Datum" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Width="*"  Header="Domaći" Binding="{Binding HomeTeam}"/>
+                            <DataGridTextColumn Width="*" Header="Gosti" Binding="{Binding AwayTeam}"/>
+                            <DataGridTextColumn Width="*" Header="Datum" Binding="{Binding StartTime}"/>
                             <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
                             <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City}"/>
-                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence}"/>
                             <DataGridTextColumn Width="*" Header="Broj sudaca"/>
                         </DataGrid.Columns>
 

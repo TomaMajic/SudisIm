@@ -61,6 +61,7 @@
     <Compile Include="RefereeWindow.xaml.cs">
       <DependentUpon>RefereeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\RefereeViewModel.cs" />
     <Page Include="AddGame.xaml">
       <SubType>Designer</SubType>
