@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\TeamTests.cs" />
+    <Compile Include="Models\RefereeTests.cs" />
     <Compile Include="Models\NotificationTests.cs" />
     <Compile Include="Models\LicenceTests.cs" />
     <Compile Include="Models\CityTests.cs" />

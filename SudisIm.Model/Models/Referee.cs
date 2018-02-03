@@ -2,6 +2,16 @@
 {
     public class Referee
     {
+        public Referee()
+        {}
+
+        public Referee(string firstName, string lastName, Licence licence)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Licence = licence;
+        }
+
         public virtual long Id { get; set; }
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
@@ -11,6 +21,5 @@
         public virtual Licence Licence { get; set; }
        
         public virtual City City { get; set; }
-        // TODO: Dodaj ref na    licence
     }
 }
