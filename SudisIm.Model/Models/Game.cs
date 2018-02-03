@@ -19,7 +19,7 @@ namespace SudisIm.Model.Models
 
         public virtual City City { get; set; }
 
-        public  int GetRefereeCount()
+        public virtual int GetRefereeCount()
         {
             return this.Referees.Count;
         }

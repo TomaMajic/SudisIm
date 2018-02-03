@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudisIm.Desktop.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,21 @@ namespace SudisIm.Desktop
     /// </summary>
     public partial class AddGame : Window
     {
-        public AddGame()
+        private AdminController _adminController;
+        public AddGame(AdminController adminController)
         {
+            _adminController = adminController;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Add_Game_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _adminController.AddGame();
         }
     }
 }

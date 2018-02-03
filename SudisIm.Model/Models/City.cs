@@ -13,6 +13,6 @@
 
         public virtual long Id { get; set; }
         public virtual string Name { get; set; }
-        public int PostalCode { get; set; }
+        public virtual int PostalCode { get; set; }
     }
 }

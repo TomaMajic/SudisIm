@@ -11,34 +11,33 @@
         <Label Content="Dodaj novu utakmicu" Margin="60,25,60,0" HorizontalContentAlignment="Center" VerticalAlignment ="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16" Height="34"/>
 
         <Label Content="Domaći:" HorizontalAlignment="Left" Margin="64,90,0,0" VerticalAlignment="Top" Width="55"/>
-        <ComboBox HorizontalAlignment="Left" Margin="130,90,0,0" VerticalAlignment="Top" Width="160"/>
+        <ComboBox Name="HomeTeamComboBox" HorizontalAlignment="Left" Margin="130,90,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Gosti:" HorizontalAlignment="Left" Margin="74,120,0,0" VerticalAlignment="Top" Width="39"/>
-        <ComboBox HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" Width="160"/>
+        <ComboBox Name="AwayTeamComboBox" HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="64,150,0,0" VerticalAlignment="Top" Width="49"/>
+        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160"/>
 
 
         <Label Content="Adresa:" HorizontalAlignment="Left" Margin="64,180,0,0" VerticalAlignment="Top" Width="49"/>
+        <TextBox Name="AddressTextBox" HorizontalAlignment="Left" Height="23" Margin="130,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Mjesto:" HorizontalAlignment="Left" Margin="64,210,0,0" VerticalAlignment="Top" Width="49"/>
-        <ComboBox HorizontalAlignment="Left" Margin="130,210,0,0" VerticalAlignment="Top" Width="160"/>
+        <ComboBox Name="CityComboBox" HorizontalAlignment="Left" Margin="130,210,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Licenca:" HorizontalAlignment="Left" Margin="59,240,0,0" VerticalAlignment="Top" Width="54"/>
-        <ComboBox HorizontalAlignment="Left" Margin="130,240,0,0" VerticalAlignment="Top" Width="160"/>
+        <ComboBox Name="LicenceComboBox" HorizontalAlignment="Left" Margin="130,240,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Broj sudaca:" HorizontalAlignment="Left" Margin="37,270,0,0" VerticalAlignment="Top" Width="76"/>
+        <TextBox Name="NumberOfRefereeTextBox" HorizontalAlignment="Left" Height="23" Margin="130,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="25"/>
 
         <Label Content="Suci:" HorizontalAlignment="Left" Margin="76,300,0,0" VerticalAlignment="Top" Width="37"/>
-        <ComboBox HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="160"/>
-        <ListBox HorizontalAlignment="Left" Height="70" Margin="130,331,0,0" VerticalAlignment="Top" Width="160"/>
+        <ComboBox Name="RefereeComboBox" HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="160"/>
+        <ListBox Name="RefereeListBox" HorizontalAlignment="Left" Height="70" Margin="130,331,0,0" VerticalAlignment="Top" Width="160"/>
         
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="209,416,0,0" VerticalAlignment="Top" Width="83" Height="28"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="103,416,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="Button_Click"/>
-        <DatePicker HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="130,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="130,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="25"/>
-
-
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="209,416,0,0" VerticalAlignment="Top" Width="83" Height="28" Click="Add_Game_Button_Click"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="103,416,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="Cancel_Button_Click"/>
+        
     </Grid>
 </Window>
