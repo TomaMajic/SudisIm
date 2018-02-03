@@ -9,6 +9,7 @@ namespace SudisIm.DAL.Mappings
         {
             Id(c => c.Id).GeneratedBy.Native();
             Map(c => c.Name);
+            Map(c => c.PostalCode);
         }
     }
 }
