@@ -78,6 +78,7 @@
     <Compile Include="Repositories\LicenceRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />
+    <Compile Include="Repositories\TeamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

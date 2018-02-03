@@ -9,6 +9,7 @@ namespace SudisIm.Model.Models
         {
             this.Referees = new List<Referee>();
         }
+
         public virtual long Id { get; set; }
         public virtual Team HomeTeam { get; set; }
         public virtual Team AwayTeam { get; set; }
