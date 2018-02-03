@@ -19,14 +19,6 @@ namespace SudisIm.Model.Models
 
         public virtual City City { get; set; }
 
-        public int Property
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
         public virtual int GetRefereeCount()
         {
             return this.Referees.Count;
