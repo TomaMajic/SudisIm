@@ -9,7 +9,7 @@ namespace SudisIm.Model.Models
         {
             this.Referees = new List<Referee>();
         }
-
+        
         public virtual long Id { get; set; }
         public virtual Team HomeTeam { get; set; }
         public virtual Team AwayTeam { get; set; }
@@ -18,6 +18,14 @@ namespace SudisIm.Model.Models
         public virtual string Address { get; set; }
 
         public virtual City City { get; set; }
+
+        public int Property
+        {
+            get => default(int);
+            set
+            {
+            }
+        }
 
         public virtual int GetRefereeCount()
         {

@@ -15,7 +15,6 @@ namespace SudisIm.DAL.NHibernate
     {
         private static readonly ISessionFactory _instance = CreateSessionFactory();
         public static  UserManager<ApplicationUser> userManager;
-        //public static SignInManager<ApplicationUser, string> signInManager;
         
         public static ISessionFactory Instance
         {
@@ -48,12 +47,8 @@ namespace SudisIm.DAL.NHibernate
                     cfg.AddDeserializedMapping(MappingHelper.GetIdentityMappings(myEntities), null);
                     new SchemaUpdate(cfg).Execute(false, true);
                 })
-                //.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
                 .BuildSessionFactory();
-
-
-            //var exporter = new SchemaExport(configuration);
-            //exporter.Execute(true, true, false);
+            
             userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(sessionFactory.OpenSession()));
            
