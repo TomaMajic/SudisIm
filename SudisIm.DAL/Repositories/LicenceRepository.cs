@@ -21,6 +21,11 @@ namespace SudisIm.DAL.Repositories
             this.session = session;
         }
 
+        public Licence GetLicenceById(long licenceId)
+        {
+            return this.session.Get<Licence>(licenceId);
+        }
+
         public ICollection<Licence> GetLicences()
         {
             return this.session.Query<Licence>().ToList();

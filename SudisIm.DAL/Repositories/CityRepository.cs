@@ -21,6 +21,11 @@ namespace SudisIm.DAL.Repositories
             this.session = session;
         }
 
+        public City GetCityById(long cityId)
+        {
+            return this.session.Get<City>(cityId);
+        }
+
         public ICollection<City> GetCities()
         {
             return this.session.Query<City>().ToList();

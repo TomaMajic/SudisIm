@@ -24,5 +24,9 @@ namespace SudisIm.Model.Models
             return this.Referees.Count;
         }
 
+        public virtual string GetFormatedStartTime()
+        {
+            return $"{this.StartTime:dddd, MM.dd.yyyy}";
+        }
     }
 }
