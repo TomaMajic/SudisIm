@@ -1,4 +1,5 @@
-﻿using SudisIm.DAL.Repositories;
+﻿using SudisIm.DAL.NHibernate;
+using SudisIm.DAL.Repositories;
 using SudisIm.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace SudisIm.Desktop.Controllers
         private LicenceRepository _licenceRepository;
         private RefereeRepository _refereeRepository;
         private GameRepository _gameRepository;
-        private AddGame addGame; 
+        private AddGame addGame;
+
         public AdminController()
             : this(new CityRepository(), new TeamRepository(), new LicenceRepository(),new RefereeRepository(),new GameRepository())
         { }
@@ -45,6 +47,7 @@ namespace SudisIm.Desktop.Controllers
             {
                 addGame.CityComboBox.Items.Add(new ComboBoxItem { Content = city.Name, Tag = city.Id });
             }
+            addGame.CityComboBox.SelectedIndex = 0;
 
             List<Team> teams = _teamRepository.GetTeams().ToList();
             foreach (Team team in teams)
@@ -52,18 +55,24 @@ namespace SudisIm.Desktop.Controllers
                 addGame.HomeTeamComboBox.Items.Add(new ComboBoxItem { Content = team.Name, Tag = team.Id });
                 addGame.AwayTeamComboBox.Items.Add(new ComboBoxItem { Content = team.Name, Tag = team.Id });
             }
+            addGame.HomeTeamComboBox.SelectedIndex = 0;
+            addGame.AwayTeamComboBox.SelectedIndex = 0;
 
             List<Licence> licences = _licenceRepository.GetLicences().ToList();
             foreach (Licence licence in licences)
             {
                 addGame.LicenceComboBox.Items.Add(new ComboBoxItem { Content = licence.Name + " prioritet: " + licence.Priority, Tag = licence.Id });
             }
+            addGame.LicenceComboBox.SelectedIndex = 0;
 
             List<Referee> referees = _refereeRepository.GetReferees().ToList();
             foreach(Referee referee in referees)
             {
                 addGame.RefereeComboBox.Items.Add(new ComboBoxItem { Content = referee.FirstName + " " + referee.LastName, Tag = referee.Id });
             }
+            addGame.RefereeComboBox.SelectedIndex = 0;
+
+            addGame.DatePicker.SelectedDate = DateTime.Now;
 
             addGame.Show();
         }
@@ -71,9 +80,28 @@ namespace SudisIm.Desktop.Controllers
         public void AddGame()
         {
             Game game = new Game();
-            //Team team = _teamRepository.get
+
+            ComboBoxItem selectedComboBoxItem =(ComboBoxItem)addGame.HomeTeamComboBox.SelectedItem;
+            Team homeTeam = _teamRepository.GetTeamById((long)selectedComboBoxItem.Tag);
+            game.HomeTeam = homeTeam;
+
+            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
+            Team awayTeam = _teamRepository.GetTeamById((long)selectedComboBoxItem.Tag);
+            game.AwayTeam = awayTeam;
+
+            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
+            City city = _cityRepository.GetCityById((long)selectedComboBoxItem.Tag);
+            game.City = city;
+
+            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
+            Referee referee = _refereeRepository.GetRefereeById((long)selectedComboBoxItem.Tag);
+            List<Referee> referees = new List<Referee>();
+            referees.Add(referee);
+            game.Referees = referees;
+
             game.Address = addGame.AddressTextBox.Text;
             game.StartTime = addGame.DatePicker.SelectedDate.Value;
+
             _gameRepository.AddGame(game); 
         }
 

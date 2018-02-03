@@ -17,7 +17,20 @@
         <ComboBox Name="AwayTeamComboBox" HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="64,150,0,0" VerticalAlignment="Top" Width="49"/>
-        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160"/>
+        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160">
+        <!--<DatePicker Name="Picker" Margin="130,150,0,0">-->
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat={}{0:dd/MM/yyyy hh:mm:ss}}"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
 
 
         <Label Content="Adresa:" HorizontalAlignment="Left" Margin="64,180,0,0" VerticalAlignment="Top" Width="49"/>

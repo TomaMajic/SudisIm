@@ -37,8 +37,11 @@ namespace SudisIm.DAL.NHibernate
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CityMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<LicenceMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<RefereeMap>())
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TeamMap>())               
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<GameMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NotificationMap>())
                 .ExposeConfiguration(cfg =>
                 {
 
