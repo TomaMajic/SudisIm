@@ -29,7 +29,7 @@ namespace SudisIm.DAL.Repositories
 
         public ICollection<Game> GetGames()
         {
-            return this.session.Query<Game>().ToList();
+           return this.session.Query<Game>().ToList();
         }
 
         public Game AddGame(Game game)

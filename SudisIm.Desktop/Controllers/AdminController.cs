@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using NHibernate;
 
 namespace SudisIm.Desktop.Controllers
 {
@@ -21,10 +22,14 @@ namespace SudisIm.Desktop.Controllers
         private AddGame addGame;
 
         public AdminController()
-            : this(new CityRepository(), new TeamRepository(), new LicenceRepository(), new RefereeRepository(), new GameRepository())
+            :this(NHibernateHelper.Instance.OpenSession())
         { }
 
-        public AdminController(CityRepository cityRepository, TeamRepository teamRepository, LicenceRepository licenceRepository, RefereeRepository refereeRepository, GameRepository gameRepository)
+        public AdminController(ISession session)
+            : this(new CityRepository(session), new TeamRepository(session), new LicenceRepository(session),new RefereeRepository(session),new GameRepository(session))
+        { }
+
+        public AdminController(CityRepository cityRepository, TeamRepository teamRepository, LicenceRepository licenceRepository,RefereeRepository refereeRepository,GameRepository gameRepository)
         {
             _cityRepository = cityRepository;
             _teamRepository = teamRepository;
@@ -95,20 +100,20 @@ namespace SudisIm.Desktop.Controllers
         {
             Game game = new Game();
 
-            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)addGame.HomeTeamComboBox.SelectedItem;
-            Team homeTeam = _teamRepository.GetTeamById((long)selectedComboBoxItem.Tag);
+            var homeSelector =(ComboBoxItem)addGame.HomeTeamComboBox.SelectedItem;
+            Team homeTeam = _teamRepository.GetTeamById((long)homeSelector.Tag);
             game.HomeTeam = homeTeam;
 
-            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
-            Team awayTeam = _teamRepository.GetTeamById((long)selectedComboBoxItem.Tag);
+            var awaySelector = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
+            Team awayTeam = _teamRepository.GetTeamById((long)awaySelector.Tag);
             game.AwayTeam = awayTeam;
 
-            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
-            City city = _cityRepository.GetCityById((long)selectedComboBoxItem.Tag);
+            var citySelector = (ComboBoxItem)addGame.CityComboBox.SelectedItem;
+            City city = _cityRepository.GetCityById((long)citySelector.Tag);
             game.City = city;
 
-            selectedComboBoxItem = (ComboBoxItem)addGame.AwayTeamComboBox.SelectedItem;
-            Referee referee = _refereeRepository.GetRefereeById((long)selectedComboBoxItem.Tag);
+            var refereeSelector = (ComboBoxItem)addGame.RefereeComboBox.SelectedItem;
+            Referee referee = _refereeRepository.GetRefereeById((long)refereeSelector.Tag);
             List<Referee> referees = new List<Referee>();
             referees.Add(referee);
             game.Referees = referees;
