@@ -13,5 +13,7 @@ namespace SudisIm.Desktop.ViewModels
         public string StartTime { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        public string Licence { get; set; }
+        public string Referees { get; set; }
     }
 }

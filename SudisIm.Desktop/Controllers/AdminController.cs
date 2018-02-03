@@ -5,8 +5,6 @@ using SudisIm.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using NHibernate;
 
@@ -22,14 +20,14 @@ namespace SudisIm.Desktop.Controllers
         private AddGame addGame;
 
         public AdminController()
-            :this(NHibernateHelper.Instance.OpenSession())
+            : this(NHibernateHelper.Instance.OpenSession())
         { }
 
         public AdminController(ISession session)
-            : this(new CityRepository(session), new TeamRepository(session), new LicenceRepository(session),new RefereeRepository(session),new GameRepository(session))
+            : this(new CityRepository(session), new TeamRepository(session), new LicenceRepository(session), new RefereeRepository(session), new GameRepository(session))
         { }
 
-        public AdminController(CityRepository cityRepository, TeamRepository teamRepository, LicenceRepository licenceRepository,RefereeRepository refereeRepository,GameRepository gameRepository)
+        public AdminController(CityRepository cityRepository, TeamRepository teamRepository, LicenceRepository licenceRepository, RefereeRepository refereeRepository, GameRepository gameRepository)
         {
             _cityRepository = cityRepository;
             _teamRepository = teamRepository;
@@ -100,7 +98,7 @@ namespace SudisIm.Desktop.Controllers
         {
             Game game = new Game();
 
-            var homeSelector =(ComboBoxItem)addGame.HomeTeamComboBox.SelectedItem;
+            var homeSelector = (ComboBoxItem)addGame.HomeTeamComboBox.SelectedItem;
             Team homeTeam = _teamRepository.GetTeamById((long)homeSelector.Tag);
             game.HomeTeam = homeTeam;
 
@@ -144,7 +142,7 @@ namespace SudisIm.Desktop.Controllers
         internal void LoadGames(DataGrid gamesDataGrid)
         {
             List<Game> games = _gameRepository.GetGames().ToList();
-            foreach(Game game in games)
+            foreach (Game game in games)
             {
                 GameViewModel gameViewModel = new GameViewModel();
                 gameViewModel.HomeTeam = game.HomeTeam.Name;
@@ -152,6 +150,8 @@ namespace SudisIm.Desktop.Controllers
                 gameViewModel.Address = game.Address;
                 gameViewModel.City = game.City.Name;
                 gameViewModel.StartTime = game.GetFormatedStartTime();
+                //gameViewModel.Licence = game.licence;
+                gameViewModel.Referees = game.Referees.Count().ToString() + "/Max";
                 gamesDataGrid.Items.Add(gameViewModel);
             }
         }
