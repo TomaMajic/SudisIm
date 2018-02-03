@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\NotificationTests.cs" />
+    <Compile Include="Models\LicenceTests.cs" />
     <Compile Include="Models\CityTests.cs" />
+    <Compile Include="Models\GameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
