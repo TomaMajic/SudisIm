@@ -59,5 +59,11 @@ namespace SudisIm.Controllers
                 Game = new Game()
             };
         }
+
+        [HttpPost]
+        public ActionResult Create(GameCreateViewModel gameCreateViewModel)
+        {
+            return View();
+        }
     }
 }
