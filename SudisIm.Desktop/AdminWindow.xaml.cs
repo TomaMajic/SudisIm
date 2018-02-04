@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,12 +22,21 @@ namespace SudisIm.Desktop
     public partial class AdminWindow : Window
     {
         private bool shutDownApplication = true;
-        private AdminController adminController; 
+        private AdminController adminController;
+        private List<DateTime> gameDates;
         public AdminWindow()
         {
-            adminController = new AdminController();
             InitializeComponent();
-            adminController.LoadReferees(this.suciDataGrid);
+            adminController = new AdminController(this);
+            adminController.LoadReferees();
+            adminController.LoadGames();
+
+            // testiranje datuma
+            gameDates = adminController.GetGamesDates();
+
+            adminCalendar.IsTodayHighlighted = false;
+
+
         }
 
         private void Add_Referee_Button_Click(object sender, RoutedEventArgs e)
@@ -61,6 +71,35 @@ namespace SudisIm.Desktop
             shutDownApplication = false;
             this.Close();
             mainWindow.Show();
+        }
+
+
+        // kalendar
+        private void calendarButton_Loaded(object sender, EventArgs e)
+        {
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
+            button.DataContextChanged += new DependencyPropertyChangedEventHandler(calendarButton_DataContextChanged);
+        }
+
+        private void HighlightDay(CalendarDayButton button, DateTime date)
+        {
+            if (gameDates.Contains(date))
+            {
+                button.Background = Brushes.PaleVioletRed;
+            }
+            else
+            {
+                button.Background = Brushes.White;
+            }
+        }
+
+        private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
         }
     }
 }

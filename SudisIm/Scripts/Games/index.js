@@ -6,7 +6,8 @@
             "paginate": {
                 "previous": "Prethodna",
                 "next": "Sljedeća"
-            }
+            },
+            "info": ""
         },
         "lengthChange": false
     });

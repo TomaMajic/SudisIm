@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SudisIm.Desktop"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="AddGame" Height="500" Width="350">
@@ -16,15 +16,14 @@
         <Label Content="Gosti:" HorizontalAlignment="Left" Margin="74,120,0,0" VerticalAlignment="Top" Width="39"/>
         <ComboBox Name="AwayTeamComboBox" HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" Width="160"/>
 
-        <Label Content="Datum:" HorizontalAlignment="Left" Margin="64,150,0,0" VerticalAlignment="Top" Width="49"/>
-        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160">
-        <!--<DatePicker Name="Picker" Margin="130,150,0,0">-->
+        <Label Content="Datum i vrijeme:" HorizontalAlignment="Left" Margin="16,150,0,0" VerticalAlignment="Top" Width="97"/>
+        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="160" Text="">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat={}{0:dd/MM/yyyy hh:mm:ss}}"/>
+                                <TextBox Name="DatePickerTextBox1" Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat={}{0:dd/MM/yyyy hh:mm}}"/>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -32,25 +31,26 @@
             </DatePicker.Resources>
         </DatePicker>
 
-
         <Label Content="Adresa:" HorizontalAlignment="Left" Margin="64,180,0,0" VerticalAlignment="Top" Width="49"/>
         <TextBox Name="AddressTextBox" HorizontalAlignment="Left" Height="23" Margin="130,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Mjesto:" HorizontalAlignment="Left" Margin="64,210,0,0" VerticalAlignment="Top" Width="49"/>
         <ComboBox Name="CityComboBox" HorizontalAlignment="Left" Margin="130,210,0,0" VerticalAlignment="Top" Width="160"/>
 
-        <Label Content="Licenca:" HorizontalAlignment="Left" Margin="59,240,0,0" VerticalAlignment="Top" Width="54"/>
+        <Label Content="Minimalna licenca:" HorizontalAlignment="Left" Margin="5,240,0,0" VerticalAlignment="Top" Width="108"/>
         <ComboBox Name="LicenceComboBox" HorizontalAlignment="Left" Margin="130,240,0,0" VerticalAlignment="Top" Width="160"/>
 
         <Label Content="Broj sudaca:" HorizontalAlignment="Left" Margin="37,270,0,0" VerticalAlignment="Top" Width="76"/>
-        <TextBox Name="NumberOfRefereeTextBox" HorizontalAlignment="Left" Height="23" Margin="130,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="25"/>
+        <Controls:NumericUpDown Name="numberOfReferee" Minimum = "1" Maximum="10" Margin="130,270,0,0" Height="12" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" BorderBrush="Gray" Value="1" TextAlignment="Center" ValueChanged="NumericUpDown_ValueChanged"/>
 
-        <Label Content="Suci:" HorizontalAlignment="Left" Margin="76,300,0,0" VerticalAlignment="Top" Width="37"/>
-        <ComboBox Name="RefereeComboBox" HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="160"/>
-        <ListBox Name="RefereeListBox" HorizontalAlignment="Left" Height="70" Margin="130,331,0,0" VerticalAlignment="Top" Width="160"/>
-        
+        <Label Content="Dodaj suca:" HorizontalAlignment="Left" Margin="39,300,0,0" VerticalAlignment="Top" Width="74"/>
+        <ComboBox Name="RefereeComboBox" HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="160" SelectionChanged="RefereeComboBox_SelectionChanged"/>
+
+        <Label Content="Odabrani suci:" HorizontalAlignment="Left" Margin="25,330,0,0" VerticalAlignment="Top" Width="88"/>
+        <ListBox Name="RefereeListBox" HorizontalAlignment="Left" Height="70" Margin="130,330,0,0" VerticalAlignment="Top" Width="160" SelectionChanged="RefereeListBox_SelectionChanged"/>
+
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="209,416,0,0" VerticalAlignment="Top" Width="83" Height="28" Click="Add_Game_Button_Click"/>
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="103,416,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="Cancel_Button_Click"/>
-        
+
     </Grid>
 </Window>
