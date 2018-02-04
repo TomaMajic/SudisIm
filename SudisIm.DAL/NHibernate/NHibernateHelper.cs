@@ -24,7 +24,8 @@ namespace SudisIm.DAL.NHibernate
         private static ISessionFactory CreateSessionFactory()
         {
             // this assumes you are using the default Identity model of "ApplicationUser"
-            var myEntities = new[] {
+
+         var myEntities = new[] {
                 typeof(ApplicationUser)
             };
 

@@ -26,6 +26,19 @@ namespace SudisIm
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            #region Plugins
+            #region DataTable
+            bundles.Add(new StyleBundle("~/bundles/css/datatables").Include(
+                "~/Plugins/DataTables/css/dataTables.bootstrap.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/datatables").Include(
+                "~/Plugins/DataTables/js/jquery.dataTables.min.js",
+                "~/Plugins/DataTables/js/dataTables.bootstrap.min.js"));
+
+            #endregion /DataTable
+
+            #endregion /Plugins
         }
     }
 }

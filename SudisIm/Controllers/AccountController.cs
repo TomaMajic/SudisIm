@@ -159,6 +159,7 @@ namespace SudisIm.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.Claims.Add(new IdentityUserClaim());
                 var result = await NHibernateHelper.userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
