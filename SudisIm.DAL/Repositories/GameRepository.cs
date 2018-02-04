@@ -38,5 +38,10 @@ namespace SudisIm.DAL.Repositories
             session.Flush();
             return game;
         }
+
+        public ICollection<Game> GetGamesForReferee(long refereeId)
+        {
+            return this.session.Query<Game>().Where(g => g.Referees.Select(r => r.Id).Contains(refereeId)).ToList();
+        }
     }
 }
