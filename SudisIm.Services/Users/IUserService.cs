@@ -1,7 +1,9 @@
-﻿namespace SudisIm.Services.Users
+﻿using SudisIm.Model.Models;
+
+namespace SudisIm.Services.Users
 {
     interface IUserService
     {
-      //  bool HasClaim(string username, string password, string claimValue);
+        Referee GetRefereeByUser(string username, string password);
     }
 }
