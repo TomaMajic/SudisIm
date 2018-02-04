@@ -36,5 +36,20 @@ namespace SudisIm.Desktop
         {
             _adminController.AddGame();
         }
+
+        private void NumericUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            _adminController.NumberOfRefereeChanged((int)numberOfReferee.Value.Value);
+        }
+
+        private void RefereeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _adminController.AddSelectedReferee();
+        }
+
+        private void RefereeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _adminController.RemoveRefereeFromList();
+        }
     }
 }
