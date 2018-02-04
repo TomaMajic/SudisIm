@@ -25,11 +25,11 @@ namespace SudisIm.DAL.Repositories
             return this.session.Get<Referee>(refereeId);
         }
 
-        public ICollection<Referee> GetReferees()
+        public IQueryable<Referee> GetReferees()
         {
-            return this.session.Query<Referee>().ToList();
+            return this.session.Query<Referee>();
         }
-
+        
         public Referee AddReferee(Referee referee)
         {
             session.SaveOrUpdate(referee);
