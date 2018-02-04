@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SudisIm.Model.Models.Game>
+@{
+    ViewBag.Title = "Kalendar";
+}
+<div class="container" style="padding-top: 20px">  
+    <div class="row">
+        <div id='calendar'></div>
+    </div>
+</div>
+
+@Styles.Render("~/bundles/css/full-calendar")
+
+@section scripts{
+    @Scripts.Render("~/bundles/js/full-calendar")
+
+    <script src="~/Scripts/Calendar/index.js"></script>
+}
