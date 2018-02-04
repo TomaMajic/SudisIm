@@ -17,7 +17,7 @@ namespace SudisIm.DAL.Mappings
             References(r => r.City);
             References(r => r.Licence);
             References(r => r.User);
-            HasMany(r => r.Absences);
+            HasMany(r => r.Absences).Inverse();
         }
     }
 }

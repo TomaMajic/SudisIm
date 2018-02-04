@@ -10,7 +10,7 @@ namespace SudisIm.DAL.Mappings
             Id(c => c.Id).GeneratedBy.Native();
             Map(c => c.Excuse);
             Map(c => c.Date);
-            HasOne(c => c.Referee);
+            References(c => c.Referee);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using System.Web.Mvc;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
@@ -11,7 +9,7 @@ namespace SudisIm.Controllers
     public class HomeController : Controller
     {
         private readonly IGameRepository gameRepository;
-
+        private readonly ISession session;
         #region Constructors
         public HomeController()
             : this(NHibernateHelper.Instance.OpenSession())
@@ -19,7 +17,9 @@ namespace SudisIm.Controllers
 
         public HomeController(ISession session)
             : this(new GameRepository(session))
-        { }
+        {
+            this.session = session;
+        }
 
         public HomeController(IGameRepository gameRepository)
         {
