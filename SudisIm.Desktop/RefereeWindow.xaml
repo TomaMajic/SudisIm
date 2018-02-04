@@ -19,6 +19,20 @@
             <TabItem Header="Odsutnost">
                 <Grid Background="#FFE5E5E5">
 
+                    <DataGrid Name="refereeDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"  Header="Prezime" Binding="{Binding LastName}"/>
+                            <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
+                            <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Kontakt" Binding="{Binding Contact}"/>
+                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Description}"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
                 </Grid>
             </TabItem>
 
