@@ -33,7 +33,7 @@
                         </DataGrid.Columns>
 
                     </DataGrid>
-                    <Button Content="Dodaj novu odsutnost" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Width="136" Click="AddAbsence_Button_Click/>
+                    <Button Content="Dodaj novu odsutnost" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Width="136" Click="AddAbsence_Button_Click"/>
 
                 </Grid>
             </TabItem>

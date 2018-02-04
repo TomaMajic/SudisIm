@@ -15,10 +15,13 @@ namespace SudisIm.Desktop.Controllers
         private RefereeWindow _refereeWindow;
         private AbsenceRepository _absenceRepository;
         private GameRepository _gameRepository;
-        public RefereeController(RefereeWindow refereeWindow)
+        private Referee _myRefereeAccount;
+        private AddAbsenceWindow _addAbsenceWindow;
+        public RefereeController(RefereeWindow refereeWindow,Referee myRefereeAccount)
             : this(NHibernateHelper.Instance.OpenSession())
         {
             _refereeWindow = refereeWindow;
+            _myRefereeAccount = myRefereeAccount;
         }
 
         public RefereeController(ISession session)
@@ -44,7 +47,7 @@ namespace SudisIm.Desktop.Controllers
         {
             List<DateTime> absenceDates = new List<DateTime>();
 
-            List<Absence> absences = _absenceRepository.GetAbsencesForReferee(1).ToList();
+            List<Absence> absences = _absenceRepository.GetAbsencesForReferee(_myRefereeAccount.Id).ToList();
             foreach(Absence absence in absences)
             {
                 absenceDates.Add(absence.Date);
@@ -57,13 +60,38 @@ namespace SudisIm.Desktop.Controllers
         {
             List<DateTime> gameDates = new List<DateTime>();
 
-            List<Game> games = _gameRepository.GetGamesForReferee(1).ToList();
+            List<Game> games = _gameRepository.GetGamesForReferee(_myRefereeAccount.Id).ToList();
             foreach (Game game in games)
             {
                 gameDates.Add(game.StartTime);
             }
 
             return gameDates;
+        }
+
+        internal void OpenAddAbsenceWindow()
+        {
+            _addAbsenceWindow = new AddAbsenceWindow(this);
+            _addAbsenceWindow.Top = _refereeWindow.Top;
+            _addAbsenceWindow.Left = _refereeWindow.Left;
+            _addAbsenceWindow.Show();
+        }
+
+        internal void AddAbsence()
+        {
+            Absence absence = new Absence();
+            absence.Date = _addAbsenceWindow.DatePicker.SelectedDate.Value;
+            absence.Excuse = _addAbsenceWindow.Excuse.Text;
+            absence.Referee = _myRefereeAccount;
+            _absenceRepository.AddAbsence(absence);
+            _addAbsenceWindow.Close();
+            ReloadListOfAdsence();
+        }
+
+        private void ReloadListOfAdsence()
+        {
+            _refereeWindow.absenceDataGrid.Items.Clear();
+            LoadExcuses();
         }
     }
 }

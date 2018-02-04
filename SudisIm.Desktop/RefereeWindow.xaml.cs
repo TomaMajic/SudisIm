@@ -26,14 +26,17 @@ namespace SudisIm.Desktop
         private List<DateTime> absenceDates;
         private List<DateTime> gameDates;
         private Referee _myRefereeAccount;
+        private RefereeController _refereeController;
         public RefereeWindow(Referee myRefereeAccount)
         {
             InitializeComponent();
+
             _myRefereeAccount = myRefereeAccount;
-            RefereeController refereeController = new RefereeController(this);
-            absenceDates = refereeController.GetAbsenceDates();
-            gameDates = refereeController.GetGameDates();
-            refereeController.LoadExcuses();
+            _refereeController = new RefereeController(this, _myRefereeAccount);
+
+            absenceDates = _refereeController.GetAbsenceDates();
+            gameDates = _refereeController.GetGameDates();
+            _refereeController.LoadExcuses();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -90,7 +93,7 @@ namespace SudisIm.Desktop
 
         private void AddAbsence_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            _refereeController.OpenAddAbsenceWindow();
         }
     }
 }

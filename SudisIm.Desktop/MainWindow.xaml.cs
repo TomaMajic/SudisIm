@@ -30,7 +30,8 @@ namespace SudisIm.Desktop
 
             if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "referee"))
             {
-                RefereeWindow refereeWindow = new RefereeWindow();
+                UserService userService = new UserService(NHibernateHelper.Instance.OpenSession());
+                RefereeWindow refereeWindow = new RefereeWindow(userService.GetRefereeByUser(emailTextBox.Text, passwordTextBox.Password));
                 refereeWindow.Top = this.Top;
                 refereeWindow.Left = this.Left;
                 App.Current.MainWindow = refereeWindow;

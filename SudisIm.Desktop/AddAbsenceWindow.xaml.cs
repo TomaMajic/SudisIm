@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudisIm.Desktop.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,23 @@ namespace SudisIm.Desktop
     /// </summary>
     public partial class AddAbsenceWindow : Window
     {
-        public AddAbsenceWindow()
+        private RefereeController _refereeController;
+        public AddAbsenceWindow(RefereeController refereeController)
         {
             InitializeComponent();
+            _refereeController = refereeController;
+
+            DatePicker.SelectedDate = DateTime.Now;
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddAbsence_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _refereeController.AddAbsence();
         }
     }
 }

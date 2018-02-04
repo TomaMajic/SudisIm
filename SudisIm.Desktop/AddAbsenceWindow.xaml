@@ -26,10 +26,10 @@
         </DatePicker>
 
         <Label Content="Razlog:" HorizontalAlignment="Left" Margin="36,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.604,0.385"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+        <TextBox Name="Excuse" HorizontalAlignment="Left" Height="23" Margin="90,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
 
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="82,180,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Cancel_Button_Click"/>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="185,180,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="185,180,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="AddAbsence_Button_Click"/>
 
     </Grid>
 </Window>
