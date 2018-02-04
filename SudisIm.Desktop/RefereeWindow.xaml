@@ -11,7 +11,13 @@
             <TabItem Header="Kalendar">
                 <Grid Background="#FFE5E5E5">
                     <Viewbox>
-                        <Calendar Height="200" Width="200" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                        <Calendar Name="refereeCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="200">
+                            <Calendar.CalendarDayButtonStyle>
+                                <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
+                                    <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />
+                                </Style>
+                            </Calendar.CalendarDayButtonStyle>
+                        </Calendar>
                     </Viewbox>
                 </Grid>
             </TabItem>
@@ -19,16 +25,11 @@
             <TabItem Header="Odsutnost">
                 <Grid Background="#FFE5E5E5">
 
-                    <DataGrid Name="refereeDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+                    <DataGrid Name="absenceDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="*"  Header="Prezime" Binding="{Binding LastName}"/>
-                            <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding FirstName}"/>
-                            <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City.Name}"/>
-                            <DataGridTextColumn Width="*" Header="Kontakt" Binding="{Binding Contact}"/>
-                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
-                            <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Width="*"  Header="Datum" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Width="*" Header="Razlog" Binding="{Binding Excuse}"/>
                         </DataGrid.Columns>
 
                     </DataGrid>

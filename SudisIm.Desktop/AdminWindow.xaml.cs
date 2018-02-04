@@ -31,7 +31,6 @@ namespace SudisIm.Desktop
             adminController.LoadReferees();
             adminController.LoadGames();
 
-            // testiranje datuma
             gameDates = adminController.GetGamesDates();
 
             adminCalendar.IsTodayHighlighted = false;

@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\RefereeController.cs" />
     <Compile Include="EditAdminAccountWindow.xaml.cs">
       <DependentUpon>EditAdminAccountWindow.xaml</DependentUpon>
     </Compile>
