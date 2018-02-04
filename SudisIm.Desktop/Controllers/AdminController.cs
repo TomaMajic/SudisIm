@@ -19,6 +19,10 @@ namespace SudisIm.Desktop.Controllers
         private GameRepository _gameRepository;
         private AdminWindow _adminWindow;
         private AddGame _addGame;
+        private AddReferee _addReferee;
+        private int _numberOfReferee = 1;
+        private int _numberOfAddedReferees = 0;
+        private List<Referee> _selectedReferees = new List<Referee>();
 
         public AdminController(AdminWindow adminWindow)
             : this(NHibernateHelper.Instance.OpenSession())
@@ -36,9 +40,74 @@ namespace SudisIm.Desktop.Controllers
             _refereeRepository = refereeRepository;
             _gameRepository = gameRepository;
         }
+
+        internal void RemoveRefereeFromList()
+        {
+            _addGame.RefereeListBox.Items.Remove(_addGame.RefereeListBox.SelectedItem);
+            _numberOfAddedReferees = _addGame.RefereeListBox.Items.Count;
+            _addGame.RefereeComboBox.IsEnabled = true;
+        }
+
+        internal void AddSelectedReferee()
+        {
+            ComboBoxItem refereeSelector = (ComboBoxItem)_addGame.RefereeComboBox.SelectedItem;
+            if (refereeSelector != null && _numberOfAddedReferees < _numberOfReferee)
+            {
+                Referee referee = _refereeRepository.GetRefereeById((long)refereeSelector.Tag);
+                bool addItem = true;
+                foreach(ListBoxItem item in _addGame.RefereeListBox.Items)
+                {
+                    if (item.Content.ToString() == referee.FirstName + " " + referee.LastName)
+                    {
+                        addItem = false;
+                        break;
+                    }
+                }
+                if(addItem == true)
+                {
+                    _addGame.RefereeListBox.Items.Add(new ListBoxItem { Content = referee.FirstName + " " + referee.LastName });
+                    _selectedReferees.Add(referee);
+                    _numberOfAddedReferees = _addGame.RefereeListBox.Items.Count;
+                }
+
+                if (_numberOfAddedReferees >= _numberOfReferee)
+                {
+                    _addGame.RefereeComboBox.IsEnabled = false;
+                }
+                else
+                {
+                    _addGame.RefereeComboBox.IsEnabled = true;
+                }
+            }
+        }
+
+        internal void NumberOfRefereeChanged(int numberOfReferee)
+        {
+            _numberOfReferee = numberOfReferee;
+
+            if (_addGame != null)
+            {
+                if (_numberOfAddedReferees == _numberOfReferee)
+                {
+                    _addGame.RefereeComboBox.IsEnabled = false;
+                }
+                if (_numberOfAddedReferees > _numberOfReferee)
+                {
+                    _addGame.RefereeComboBox.IsEnabled = false;
+
+                    _addGame.RefereeListBox.Items.RemoveAt(_addGame.RefereeListBox.Items.Count - 1);
+                    _numberOfAddedReferees = _addGame.RefereeListBox.Items.Count;
+                }
+                else
+                {
+                    _addGame.RefereeComboBox.IsEnabled = true;
+                }
+            }
+        }
+
         public void OpenAddRefereeForm()
         {
-            AddReferee _addReferee = new AddReferee();
+            _addReferee = new AddReferee(this);
             List<City> cities = _cityRepository.GetCities().ToList();
             foreach (City city in cities)
             {
@@ -54,6 +123,36 @@ namespace SudisIm.Desktop.Controllers
             _addReferee.LicenceComboBox.SelectedIndex = 0;
 
             _addReferee.Show();
+        }
+
+        public void AddReferee()
+        {
+            Referee referee = new Referee();
+
+            referee.FirstName = _addReferee.FirstNameTextBox.Text;
+            referee.LastName = _addReferee.LastNameTextBox.Text;
+            referee.Address = _addReferee.AddressTextBox.Text;
+            referee.Description = _addReferee.DescriptionTextBox.Text;
+            referee.Contact = _addReferee.ContactTextBox.Text;
+
+            ComboBoxItem selectedCity = (ComboBoxItem)_addReferee.CityComboBox.SelectedItem;
+            City city = _cityRepository.GetCityById((long)selectedCity.Tag);
+            referee.City = city;
+
+            ComboBoxItem selectedLicence = (ComboBoxItem)_addReferee.LicenceComboBox.SelectedItem;
+            Licence licence = _licenceRepository.GetLicenceById((long)selectedLicence.Tag);
+            referee.Licence = licence;
+
+            _refereeRepository.AddReferee(referee);
+
+            _addReferee.Close();
+            ReloadListOfReferees();
+        }
+
+        private void ReloadListOfReferees()
+        {
+            _adminWindow.refereeDataGrid.Items.Clear();
+            LoadReferees();
         }
 
         public void OpenAddGameForm()
@@ -88,7 +187,7 @@ namespace SudisIm.Desktop.Controllers
             {
                 _addGame.RefereeComboBox.Items.Add(new ComboBoxItem { Content = referee.FirstName + " " + referee.LastName, Tag = referee.Id });
             }
-            _addGame.RefereeComboBox.SelectedIndex = 0;
+            //_addGame.RefereeComboBox.SelectedIndex = 0;
 
             _addGame.DatePicker.SelectedDate = DateTime.Now;
 
@@ -122,7 +221,6 @@ namespace SudisIm.Desktop.Controllers
             game.MinimalLicence = licence;
 
             game.Address = _addGame.AddressTextBox.Text;
-            var a = _addGame.DatePicker.Text;
             game.StartTime = _addGame.DatePicker.SelectedDate.Value;
 
             _gameRepository.AddGame(game);
@@ -148,7 +246,7 @@ namespace SudisIm.Desktop.Controllers
             List<Referee> referees = _refereeRepository.GetReferees().ToList();
             foreach (Referee referee in referees)
             {
-                _adminWindow.suciDataGrid.Items.Add(referee);
+                _adminWindow.refereeDataGrid.Items.Add(referee);
             }
 
         }

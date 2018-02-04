@@ -1,4 +1,5 @@
 ﻿using SudisIm.DAL.Repositories;
+using SudisIm.Desktop.Controllers;
 using SudisIm.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,12 @@ namespace SudisIm.Desktop
     /// </summary>
     public partial class AddReferee : Window
     {
-        private RefereeRepository refereeRepository;
+        private AdminController _adminController;
 
-        public AddReferee()
+        public AddReferee(AdminController adminController)
         {
             InitializeComponent();
-            refereeRepository = new RefereeRepository();
-
+            _adminController = adminController;
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
@@ -37,26 +37,7 @@ namespace SudisIm.Desktop
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            Referee referee = new Referee();
-
-            referee.FirstName = this.FirstNameTextBox.Text;
-            referee.LastName = this.LastNameTextBox.Text;
-            referee.Address = this.AddressTextBox.Text;
-            referee.Description = this.DescriptionTextBox.Text;
-
-            // popravit
-            City city = new City();
-            city.Name = "Zarilac";
-            referee.City = city;
-
-            Licence licence = new Licence();
-            licence.Name = "najbolja licenca";
-            licence.Priority = 1;
-            referee.Licence = licence;
-
-            refereeRepository.AddReferee(referee);
-
-            this.Close();
+            _adminController.AddReferee();
         }
     }
 }
