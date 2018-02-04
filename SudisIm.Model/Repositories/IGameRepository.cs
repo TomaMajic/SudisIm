@@ -8,5 +8,6 @@ namespace SudisIm.Model.Repositories
         Game GetGameById(long gameId);
         ICollection<Game> GetGames();
         Game AddGame(Game game);
+        ICollection<Game> GetGamesForReferee(long refereeId);
     }
 }
