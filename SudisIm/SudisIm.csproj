@@ -210,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Calendar\RefereeCalendarViewModel.cs" />
     <Compile Include="Models\CustomerMap.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Games\GameCreateViewModel.cs" />
