@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
@@ -54,7 +55,7 @@ namespace SudisIm.Controllers
             {
                 Cities = this.cityRepository.GetCities(),
                 Licences = this.licenceRepository.GetLicences(),
-                Referees = this.refereeRepository.GetReferees(),
+                Referees = this.refereeRepository.GetReferees().ToList(),
                 Teams = this.teamRepository.GetTeams(),
                 Game = new Game()
             };
