@@ -7,8 +7,6 @@ namespace SudisIm.Model.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
-        public virtual bool IsSystemAdmin { get; set; }
         public virtual async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

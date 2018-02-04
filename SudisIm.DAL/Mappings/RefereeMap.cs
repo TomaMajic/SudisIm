@@ -16,6 +16,8 @@ namespace SudisIm.DAL.Mappings
             Map(r => r.Contact);
             References(r => r.City);
             References(r => r.Licence);
+            References(r => r.User);
+            HasMany(r => r.Absences);
         }
     }
 }

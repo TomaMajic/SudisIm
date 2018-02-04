@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Claims;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;

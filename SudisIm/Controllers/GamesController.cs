@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
@@ -34,6 +35,7 @@ namespace SudisIm.Controllers
         }
 
         #endregion /Constructors
+        [Authorize(Roles = "admin")]
         // GET: Games
         public ActionResult Index()
         {
