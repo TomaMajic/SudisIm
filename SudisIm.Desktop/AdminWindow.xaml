@@ -11,7 +11,13 @@
             <TabItem Header="Kalendar">
                 <Grid Background="#FFE5E5E5">
                     <Viewbox>
-                        <Calendar Name="adminCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="200"/>
+                        <Calendar Name="adminCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="200">
+                            <Calendar.CalendarDayButtonStyle>
+                                <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
+                                    <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />
+                                </Style>
+                            </Calendar.CalendarDayButtonStyle>
+                        </Calendar>
                     </Viewbox>
                 </Grid>
             </TabItem>
@@ -46,7 +52,7 @@
                             <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
                             <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City}"/>
                             <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence}"/>
-                            <DataGridTextColumn Width="*" Header="Broj sudaca"/>
+                            <DataGridTextColumn Width="*" Header="Broj sudaca" Binding="{Binding Referees}"/>
                         </DataGrid.Columns>
 
                     </DataGrid>

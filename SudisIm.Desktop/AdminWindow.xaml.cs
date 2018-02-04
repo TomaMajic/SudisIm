@@ -24,13 +24,15 @@ namespace SudisIm.Desktop
         private AdminController adminController; 
         public AdminWindow()
         {
-            adminController = new AdminController();
             InitializeComponent();
-            adminController.LoadReferees(this.suciDataGrid);
-            adminController.LoadGames(this.gameDataGrid);
+            adminController = new AdminController(this);
+            adminController.LoadReferees();
+            adminController.LoadGames();
 
             // testiranje datuma
             adminCalendar.SelectedDate = DateTime.Parse("2.2.2018.");
+            
+            
         }
 
         private void Add_Referee_Button_Click(object sender, RoutedEventArgs e)
