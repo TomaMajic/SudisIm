@@ -202,6 +202,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,6 +211,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMap.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Games\GameCreateViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -221,12 +223,42 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Plugins\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Plugins\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Plugins\DataTables\images\sort_asc.png" />
+    <Content Include="Plugins\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Plugins\DataTables\images\sort_both.png" />
+    <Content Include="Plugins\DataTables\images\sort_desc.png" />
+    <Content Include="Plugins\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap4.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.foundation.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.foundation.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.jqueryui.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.semanticui.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.semanticui.min.js" />
+    <Content Include="Plugins\DataTables\js\jquery.dataTables.js" />
+    <Content Include="Plugins\DataTables\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Games\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -273,6 +305,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

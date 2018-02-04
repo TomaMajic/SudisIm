@@ -1,20 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
-using SudisIm.Model.Models;
+using SudisIm.Model.Repositories;
 
 namespace SudisIm.Controllers
 {
     public class HomeController : Controller
     {
-        private ISessionFactory _sessionFactory;
-        [Authorize]
+        private readonly IGameRepository gameRepository;
+
+        #region Constructors
+        public HomeController()
+            : this(NHibernateHelper.Instance.OpenSession())
+        { }
+
+        public HomeController(ISession session)
+            : this(new GameRepository(session))
+        { }
+
+        public HomeController(IGameRepository gameRepository)
+        {
+            this.gameRepository = gameRepository;
+        }
+
+        #endregion /Constructors
+
         public ActionResult Index()
         {
-            return View();
+            return View(this.gameRepository.GetGames());
         }
 
         public ActionResult About()
