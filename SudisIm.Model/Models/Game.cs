@@ -16,7 +16,8 @@ namespace SudisIm.Model.Models
         public virtual DateTime StartTime { get; set; }
         public virtual ICollection<Referee> Referees { get; set; }
         public virtual string Address { get; set; }
-
+        public virtual Licence MinimalLicence { get; set; }
+        public virtual int NoOfReferees { get; set; }
         public virtual City City { get; set; }
 
         public virtual int GetRefereeCount()

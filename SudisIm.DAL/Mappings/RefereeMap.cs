@@ -13,6 +13,7 @@ namespace SudisIm.DAL.Mappings
             Map(r => r.IsDeleted);
             Map(r => r.Address);
             Map(r => r.Description);
+            Map(r => r.Contact);
             References(r => r.City);
             References(r => r.Licence);
         }
