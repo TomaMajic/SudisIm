@@ -17,27 +17,30 @@ namespace SudisIm.Desktop
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "admin"))
+            if (!string.IsNullOrWhiteSpace(emailTextBox.Text) && !string.IsNullOrWhiteSpace(passwordTextBox.Password))
             {
-                AdminWindow adminWindow = new AdminWindow();
-                adminWindow.Top = this.Top;
-                adminWindow.Left = this.Left;
-                App.Current.MainWindow = adminWindow;
-                shutDownApplication = false;
-                this.Close();
-                adminWindow.Show();
-            }
+                if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "admin"))
+                {
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.Top = this.Top;
+                    adminWindow.Left = this.Left;
+                    App.Current.MainWindow = adminWindow;
+                    shutDownApplication = false;
+                    this.Close();
+                    adminWindow.Show();
+                }
 
-            if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "referee"))
-            {
-                UserService userService = new UserService(NHibernateHelper.Instance.OpenSession());
-                RefereeWindow refereeWindow = new RefereeWindow(userService.GetRefereeByUser(emailTextBox.Text, passwordTextBox.Password));
-                refereeWindow.Top = this.Top;
-                refereeWindow.Left = this.Left;
-                App.Current.MainWindow = refereeWindow;
-                this.shutDownApplication = false;
-                this.Close();
-                refereeWindow.Show();
+                if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "referee"))
+                {
+                    UserService userService = new UserService(NHibernateHelper.Instance.OpenSession());
+                    RefereeWindow refereeWindow = new RefereeWindow(userService.GetRefereeByUser(emailTextBox.Text, passwordTextBox.Password));
+                    refereeWindow.Top = this.Top;
+                    refereeWindow.Left = this.Left;
+                    App.Current.MainWindow = refereeWindow;
+                    this.shutDownApplication = false;
+                    this.Close();
+                    refereeWindow.Show();
+                }
             }
         }
 

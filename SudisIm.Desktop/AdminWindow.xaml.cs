@@ -31,7 +31,7 @@ namespace SudisIm.Desktop
             adminController.LoadReferees();
             adminController.LoadGames();
 
-            gameDates = adminController.GetGamesDates();
+            gameDates = adminController.GetGameDates();
 
             adminCalendar.IsTodayHighlighted = false;
 
@@ -55,7 +55,7 @@ namespace SudisIm.Desktop
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(shutDownApplication == true)
+            if (shutDownApplication == true)
             {
                 Application.Current.Shutdown();
             }
@@ -84,6 +84,7 @@ namespace SudisIm.Desktop
 
         private void HighlightDay(CalendarDayButton button, DateTime date)
         {
+
             if (gameDates.Contains(date))
             {
                 button.Background = Brushes.PaleVioletRed;
@@ -92,6 +93,8 @@ namespace SudisIm.Desktop
             {
                 button.Background = Brushes.White;
             }
+
+
         }
 
         private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
