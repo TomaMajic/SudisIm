@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAbsenceWindow.xaml.cs">
+      <DependentUpon>AddAbsenceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\RefereeController.cs" />
     <Compile Include="EditAdminAccountWindow.xaml.cs">
@@ -74,6 +77,10 @@
     </Compile>
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\RefereeViewModel.cs" />
+    <Page Include="AddAbsenceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

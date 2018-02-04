@@ -34,7 +34,10 @@ namespace SudisIm.Desktop.Controllers
         public void LoadExcuses()
         {
             List<Absence> absences = _absenceRepository.GetAbsencesForReferee(1).ToList();
-            _refereeWindow.absenceDataGrid.Items.Add(absences);
+            foreach(Absence absence in absences)
+            {
+                _refereeWindow.absenceDataGrid.Items.Add(absence);
+            }
         }
 
         internal List<DateTime> GetAbsenceDates()
@@ -54,11 +57,11 @@ namespace SudisIm.Desktop.Controllers
         {
             List<DateTime> gameDates = new List<DateTime>();
 
-            //List<Game> games = _gameRepository.GetGameForReferee(1).ToList();
-            //foreach (Game game in games)
-            //{
-            //    gameDates.Add(game.StartTime);
-            //}
+            List<Game> games = _gameRepository.GetGamesForReferee(1).ToList();
+            foreach (Game game in games)
+            {
+                gameDates.Add(game.StartTime);
+            }
 
             return gameDates;
         }

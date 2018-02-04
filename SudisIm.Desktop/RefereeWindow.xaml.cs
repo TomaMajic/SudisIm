@@ -1,4 +1,5 @@
 ﻿using SudisIm.Desktop.Controllers;
+using SudisIm.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,11 @@ namespace SudisIm.Desktop
         private bool shutDownApplication = true;
         private List<DateTime> absenceDates;
         private List<DateTime> gameDates;
-        public RefereeWindow()
+        private Referee _myRefereeAccount;
+        public RefereeWindow(Referee myRefereeAccount)
         {
             InitializeComponent();
-
+            _myRefereeAccount = myRefereeAccount;
             RefereeController refereeController = new RefereeController(this);
             absenceDates = refereeController.GetAbsenceDates();
             gameDates = refereeController.GetGameDates();
@@ -65,13 +67,13 @@ namespace SudisIm.Desktop
 
         private void HighlightDay(CalendarDayButton button, DateTime date)
         {
-            if (gameDates.Contains(date))
-            {
-                button.Background = Brushes.DarkBlue;
-            }
-            else if (absenceDates.Contains(date))
+            if (absenceDates.Contains(date))
             {
                 button.Background = Brushes.PaleVioletRed;
+            }
+            else if (gameDates.Contains(date))
+            {
+                button.Background = Brushes.LightBlue;
             }
             else
             {
@@ -84,6 +86,11 @@ namespace SudisIm.Desktop
             CalendarDayButton button = (CalendarDayButton)sender;
             DateTime date = (DateTime)button.DataContext;
             HighlightDay(button, date);
+        }
+
+        private void AddAbsence_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

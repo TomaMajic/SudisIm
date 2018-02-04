@@ -15,51 +15,29 @@ namespace SudisIm.Desktop
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            //if (UserService.HasClaim(username, password, "admin"))
-            //{
-                
-            //}
-            // ako je registrirani korisnik administrator
-            AdminWindow adminWindow = new AdminWindow();
-            adminWindow.Top = this.Top;
-            adminWindow.Left = this.Left;
-            App.Current.MainWindow = adminWindow;
-            shutDownApplication = false;
-            this.Close();
-            adminWindow.Show();
+            if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "admin"))
+            {
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.Top = this.Top;
+                adminWindow.Left = this.Left;
+                App.Current.MainWindow = adminWindow;
+                shutDownApplication = false;
+                this.Close();
+                adminWindow.Show();
+            }
 
-            //if (UserService.HasClaim(username, password, "referee"))
-            //{
-
-            //}
-            //// ako je registrirani korisnik sudac
-            //RefereeWindow refereeWindow = new RefereeWindow();
-            //refereeWindow.Top = this.Top;
-            //refereeWindow.Left = this.Left;
-            //App.Current.MainWindow = refereeWindow;
-            //this.shutDownApplication = false;
-            var result = NHibernateHelper.userManager.FindAsync(emailTextBox.Text,passwordTextBox.Password);
-            
-            //// ako je registrirani korisnik administrator
-            //AdminWindow adminWindow = new AdminWindow();
-            //adminWindow.Top = this.Top;
-            //adminWindow.Left = this.Left;
-            //App.Current.MainWindow = adminWindow;
-            //shutDownApplication = false;
-            //this.Close();
-            //adminWindow.Show();
-
-            // ako je registrirani korisnik sudac
-            RefereeWindow refereeWindow = new RefereeWindow();
-            refereeWindow.Top = this.Top;
-            refereeWindow.Left = this.Left;
-            App.Current.MainWindow = refereeWindow;
-            this.shutDownApplication = false;
-            this.Close();
-            refereeWindow.Show();
-
+            if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "referee"))
+            {
+                RefereeWindow refereeWindow = new RefereeWindow();
+                refereeWindow.Top = this.Top;
+                refereeWindow.Left = this.Left;
+                App.Current.MainWindow = refereeWindow;
+                this.shutDownApplication = false;
+                this.Close();
+                refereeWindow.Show();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
