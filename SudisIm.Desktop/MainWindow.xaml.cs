@@ -1,5 +1,7 @@
 ﻿using SudisIm.DAL.NHibernate;
 using System.Windows;
+using SudisIm.Services.Users;
+
 namespace SudisIm.Desktop
 {
     /// <summary>
@@ -15,6 +17,29 @@ namespace SudisIm.Desktop
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //if (UserService.HasClaim(username, password, "admin"))
+            //{
+                
+            //}
+            // ako je registrirani korisnik administrator
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Top = this.Top;
+            adminWindow.Left = this.Left;
+            App.Current.MainWindow = adminWindow;
+            shutDownApplication = false;
+            this.Close();
+            adminWindow.Show();
+
+            //if (UserService.HasClaim(username, password, "referee"))
+            //{
+
+            //}
+            //// ako je registrirani korisnik sudac
+            //RefereeWindow refereeWindow = new RefereeWindow();
+            //refereeWindow.Top = this.Top;
+            //refereeWindow.Left = this.Left;
+            //App.Current.MainWindow = refereeWindow;
+            //this.shutDownApplication = false;
             var result = NHibernateHelper.userManager.FindAsync(emailTextBox.Text,passwordTextBox.Password);
             
             //// ako je registrirani korisnik administrator

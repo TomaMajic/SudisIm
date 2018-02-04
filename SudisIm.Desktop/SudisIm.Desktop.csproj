@@ -150,6 +150,10 @@
       <Project>{AEEF7C1D-3481-4539-A83F-D0C3709B4554}</Project>
       <Name>SudisIm.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SudisIm.Services\SudisIm.Services.csproj">
+      <Project>{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}</Project>
+      <Name>SudisIm.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
