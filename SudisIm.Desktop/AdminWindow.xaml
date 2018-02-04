@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SudisIm.Desktop"
         mc:Ignorable="d"
-        Title="Administrator" Height="600" Width="800" Closing="Window_Closing">
+        Title="Administrator" Height="600" Width="900" Closing="Window_Closing">
     <Grid>
         <TabControl Margin="0,0,0,0">
             <TabItem Header="Kalendar">
@@ -31,7 +30,7 @@
                             <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding FirstName}"/>
                             <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
                             <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City.Name}"/>
-                            <DataGridTextColumn Width="*" Header="Kontakt"/>
+                            <DataGridTextColumn Width="*" Header="Kontakt" Binding="{Binding Contact}"/>
                             <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence.Name}"/>
                             <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Description}"/>
                         </DataGrid.Columns>
@@ -51,7 +50,7 @@
                             <DataGridTextColumn Width="*" Header="Datum" Binding="{Binding StartTime}"/>
                             <DataGridTextColumn Width="*" Header="Adresa" Binding="{Binding Address}"/>
                             <DataGridTextColumn Width="*" Header="Mjesto" Binding="{Binding City}"/>
-                            <DataGridTextColumn Width="*" Header="Licenca" Binding="{Binding Licence}"/>
+                            <DataGridTextColumn Width="*" Header="Minimalna licenca" Binding="{Binding Licence}"/>
                             <DataGridTextColumn Width="*" Header="Broj sudaca" Binding="{Binding Referees}"/>
                         </DataGrid.Columns>
 

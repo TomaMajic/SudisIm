@@ -117,6 +117,10 @@ namespace SudisIm.Desktop.Controllers
             referees.Add(referee);
             game.Referees = referees;
 
+            var licenceSelector = (ComboBoxItem)_addGame.LicenceComboBox.SelectedItem;
+            Licence licence = _licenceRepository.GetLicenceById((long)licenceSelector.Tag);
+            game.MinimalLicence = licence;
+
             game.Address = _addGame.AddressTextBox.Text;
             var a = _addGame.DatePicker.Text;
             game.StartTime = _addGame.DatePicker.SelectedDate.Value;
@@ -160,10 +164,23 @@ namespace SudisIm.Desktop.Controllers
                 gameViewModel.Address = game.Address;
                 gameViewModel.City = game.City.Name;
                 gameViewModel.StartTime = game.GetFormatedStartTime();
-                //gameViewModel.Licence = game.licence;
-                gameViewModel.Referees = game.Referees.Count().ToString() + "/Max";
+                gameViewModel.Licence = game.MinimalLicence.Name;
+                gameViewModel.Referees = game.Referees.Count().ToString() + " / " + game.NoOfReferees;
                 _adminWindow.gameDataGrid.Items.Add(gameViewModel);
             }
+        }
+
+        public List<DateTime> GetGamesDates()
+        {
+            List<DateTime> dates = new List<DateTime>();
+
+            List<Game> games = _gameRepository.GetGames().ToList();
+            foreach (Game game in games)
+            {
+                dates.Add(game.StartTime);
+            }
+
+            return dates;
         }
     }
 }
