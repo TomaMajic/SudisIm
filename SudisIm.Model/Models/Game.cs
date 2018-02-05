@@ -29,5 +29,15 @@ namespace SudisIm.Model.Models
         {
             return $"{this.StartTime:dddd, MM.dd.yyyy}";
         }
+
+        public virtual string GetGameTitle()
+        {
+            return $"{this.HomeTeam.Name} vs {this.AwayTeam.Name}";
+        }
+
+        public virtual string GetLocation()
+        {
+            return $"{this.Address}, {this.City.Name}";
+        }
     }
 }

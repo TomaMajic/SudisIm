@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace SudisIm.Models.Calendar
 {
     public class RefereeCalendarViewModel
     {
-        public IEnumerable<Game> Type { get; set; }
+        public IEnumerable<CalendarEventDto> Events { get; set; }
     }
 }

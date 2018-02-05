@@ -8,5 +8,6 @@ namespace SudisIm.Model.Repositories
         Referee GetRefereeById(long refereeId);
         IQueryable<Referee> GetReferees();
         Referee AddReferee(Referee referee);
+        Referee GetRefereeByUser(string username);
     }
 }

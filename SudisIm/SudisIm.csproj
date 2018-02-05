@@ -210,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Calendar\CalendarEventDto.cs" />
     <Compile Include="Models\Calendar\RefereeCalendarViewModel.cs" />
     <Compile Include="Models\CustomerMap.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -340,6 +341,10 @@
     <ProjectReference Include="..\SudisIm.Model\SudisIm.Model.csproj">
       <Project>{AEEF7C1D-3481-4539-A83F-D0C3709B4554}</Project>
       <Name>SudisIm.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudisIm.Services\SudisIm.Services.csproj">
+      <Project>{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}</Project>
+      <Name>SudisIm.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

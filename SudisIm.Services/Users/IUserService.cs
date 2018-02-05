@@ -2,7 +2,7 @@
 
 namespace SudisIm.Services.Users
 {
-    interface IUserService
+    public interface IUserService
     {
         Referee GetRefereeByUser(string username, string password);
     }
