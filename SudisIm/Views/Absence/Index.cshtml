@@ -13,7 +13,8 @@
             <th hidden>Id</th>
             <th>Od</th>
             <th>Do</th>
-            <th>Razlog</th>          
+            <th>Razlog</th>    
+            <th></th>
             </thead>
             <tbody>
             @foreach (var absence in Model)
@@ -22,7 +23,8 @@
                     <td hidden>@absence.Id</td>
                     <td>@absence.StartDate</td>
                     <td>@absence.EndDate</td>
-                    <td>@absence.Excuse</td>                   
+                    <td>@absence.Excuse</td>    
+                    <td><span><a href="/Absence/Delete/@absence.Id">Izbriši</a></span></td>
                 </tr>
             }
             </tbody>

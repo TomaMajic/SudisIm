@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
@@ -62,6 +63,18 @@ namespace SudisIm.Controllers
 
             this.absenceRepository.AddAbsence(newAbsence);
 
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "referee")]
+        public ActionResult Delete( int id)
+        {
+            // Check owner
+            var referee = this.refereeRepository.GetRefereeByUser(User.Identity.Name);
+            if(!referee.Absences.Any(a => a.Id == id))
+                throw new Exception("Ne mozete izbrisati tudje odsustvo");
+
+            this.absenceRepository.RemoveAbsence(id);
             return RedirectToAction("Index");
         }
     }

@@ -9,5 +9,6 @@ namespace SudisIm.Model.Repositories
         ICollection<Absence> GetAbsences();
         ICollection<Absence> GetAbsencesForReferee(long refereeId);
         Absence AddAbsence(Absence absence);
+        Absence RemoveAbsence(long absenceId);
     }
 }
