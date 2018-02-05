@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Tests", "SudisIm.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Desktop", "SudisIm.Desktop\SudisIm.Desktop.csproj", "{E9A118E9-0028-4299-9BE3-890056BE5D0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudisIm.Services", "SudisIm.Services\SudisIm.Services.csproj", "{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9A118E9-0028-4299-9BE3-890056BE5D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -202,6 +202,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AbsenceController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -209,6 +211,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Calendar\CalendarEventDto.cs" />
+    <Compile Include="Models\Calendar\RefereeCalendarViewModel.cs" />
     <Compile Include="Models\CustomerMap.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Games\GameCreateViewModel.cs" />
@@ -252,12 +256,18 @@
     <Content Include="Plugins\DataTables\js\dataTables.semanticui.min.js" />
     <Content Include="Plugins\DataTables\js\jquery.dataTables.js" />
     <Content Include="Plugins\DataTables\js\jquery.dataTables.min.js" />
+    <Content Include="Plugins\full-calendar\css\fullcalendar.min.css" />
+    <Content Include="Plugins\full-calendar\js\fullcalendar.min.js" />
+    <Content Include="Plugins\full-calendar\js\locale-all.js" />
+    <Content Include="Plugins\full-calendar\js\moment.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Calendar\index.js" />
+    <Content Include="Scripts\Absence\index.js" />
     <Content Include="Scripts\Games\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -307,6 +317,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\Absence\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +344,10 @@
     <ProjectReference Include="..\SudisIm.Model\SudisIm.Model.csproj">
       <Project>{AEEF7C1D-3481-4539-A83F-D0C3709B4554}</Project>
       <Name>SudisIm.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudisIm.Services\SudisIm.Services.csproj">
+      <Project>{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}</Project>
+      <Name>SudisIm.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

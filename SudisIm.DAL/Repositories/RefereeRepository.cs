@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
@@ -25,15 +25,26 @@ namespace SudisIm.DAL.Repositories
             return this.session.Get<Referee>(refereeId);
         }
 
-        public ICollection<Referee> GetReferees()
+        public IQueryable<Referee> GetReferees()
         {
-            return this.session.Query<Referee>().ToList();
+            return this.session.Query<Referee>();
         }
-
+        
         public Referee AddReferee(Referee referee)
         {
             session.SaveOrUpdate(referee);
             session.Flush();
+            return referee;
+        }
+
+        public Referee GetRefereeByUser(string username)
+        {
+
+            var referee = this.GetReferees().FirstOrDefault(r => r.User.UserName == username);
+
+            if (referee == null)
+                throw new Exception("User does not have defined referee");
+
             return referee;
         }
     }

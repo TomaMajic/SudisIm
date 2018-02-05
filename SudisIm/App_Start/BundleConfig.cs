@@ -38,6 +38,17 @@ namespace SudisIm
 
             #endregion /DataTable
 
+            #region full-calendar
+            bundles.Add(new StyleBundle("~/bundles/css/full-calendar").Include(
+                "~/Plugins/full-calendar/css/fullcalendar.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/full-calendar").Include(
+                "~/Plugins/full-calendar/js/moment.min.js",
+                "~/Plugins/full-calendar/js/fullcalendar.min.js",
+                "~/Plugins/full-calendar/js/locale-all.js"));
+
+            #endregion /fukl-calendar
+
             #endregion /Plugins
         }
     }
