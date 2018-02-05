@@ -26,7 +26,8 @@ namespace SudisIm.Desktop
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            // TODO: dodaj spremanje u bazu
+            this.Close();
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
