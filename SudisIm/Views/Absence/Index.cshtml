@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SudisIm.Model.Models.Absence>
+@{
+    ViewBag.Title = "Odustvo";
+}
+<div class="container" style="padding-top: 20px">
+    <div class="row">
+        <button class="btn btn-success">Dodaj odsustvo</button>
+    </div>
+    <div class="row">
+        <table class="table table-hover" id="absence-table">
+            <thead>
+            <tr>
+            <th hidden>Id</th>
+            <th>Od</th>
+            <th>Do</th>
+            <th>Razlog</th>          
+            </thead>
+            <tbody>
+            @foreach (var absence in Model)
+            {
+                <tr style="cursor: pointer">
+                    <td hidden>@absence.Id</td>
+                    <td>@absence.StartDate</td>
+                    <td>@absence.EndDate</td>
+                    <td>@absence.Excuse</td>                   
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Styles.Render("~/bundles/css/datatables")
+
+@section scripts{
+    @Scripts.Render("~/bundles/js/datatables")
+
+    <script src="~/Scripts/Absence/index.js"></script>
+}
