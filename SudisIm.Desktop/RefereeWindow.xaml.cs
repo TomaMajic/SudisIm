@@ -95,5 +95,10 @@ namespace SudisIm.Desktop
         {
             _refereeController.OpenAddAbsenceWindow();
         }
+
+        private void Edit_Referee_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _refereeController.OpenEditRefereeWindow();
+        }
     }
 }

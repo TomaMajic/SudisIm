@@ -40,7 +40,7 @@
 
         </TabControl>
         <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Button_Click"/>
-        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Edit_Referee_Button_Click"/>
 
     </Grid>
 </Window>

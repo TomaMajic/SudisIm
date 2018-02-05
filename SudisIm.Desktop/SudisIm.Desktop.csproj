@@ -72,6 +72,9 @@
     <Compile Include="EditAdminAccountWindow.xaml.cs">
       <DependentUpon>EditAdminAccountWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditRefereeWindow.xaml.cs">
+      <DependentUpon>EditRefereeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RefereeWindow.xaml.cs">
       <DependentUpon>RefereeWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditAdminAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditRefereeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

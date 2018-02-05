@@ -16,7 +16,8 @@
         <Label Content="Password:" HorizontalAlignment="Left" Margin="89,120,0,0" VerticalAlignment="Top"/>
         <PasswordBox Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="165,120,0,0" VerticalAlignment="Top" Width="130"/>
 
-        <Button Content="Login" Margin="150,165,150,0" Click="Login_Button_Click" Height="31" VerticalAlignment="Top"/>
+        <Button Content="Login" Margin="150,175,150,0" Click="Login_Button_Click" Height="31" VerticalAlignment="Top"/>
+        <Label Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="100,145,0,0" VerticalAlignment="Top" Height="27" Background="White" Foreground="#FFF70909" Width="200"/>
 
     </Grid>
 </Window>

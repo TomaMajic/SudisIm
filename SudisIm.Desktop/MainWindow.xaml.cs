@@ -17,7 +17,7 @@ namespace SudisIm.Desktop
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(emailTextBox.Text) && !string.IsNullOrWhiteSpace(passwordTextBox.Password))
+            try
             {
                 if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "admin"))
                 {
@@ -41,6 +41,10 @@ namespace SudisIm.Desktop
                     this.Close();
                     refereeWindow.Show();
                 }
+            }
+            catch
+            {
+                errorLabel.Content = "Pogrešno korisničko ime ili lozinka!";
             }
         }
 
