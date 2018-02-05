@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SudisIm.Model.Models.Notification>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Obavijesti</h2>
+
+
+<ul class="list-group">
+    @foreach (var notification in Model)
+    {
+        if (notification.IsOpened == false)
+        {
+            <li class="list-group-item text-success">@notification.Text</li>
+        }
+        else
+        {
+            <li class="list-group-item">@notification.Text</li>
+}
+
+}
+</ul>
