@@ -28,7 +28,8 @@
                     <DataGrid Name="absenceDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="*"  Header="Datum" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Width="*"  Header="Datum pocetka" Binding="{Binding StartDate}"/>
+                            <DataGridTextColumn Width="*"  Header="Datum zavrsetka" Binding="{Binding EndDate}"/>
                             <DataGridTextColumn Width="*" Header="Razlog" Binding="{Binding Excuse}"/>
                         </DataGrid.Columns>
 

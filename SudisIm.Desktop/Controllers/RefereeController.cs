@@ -54,7 +54,7 @@ namespace SudisIm.Desktop.Controllers
             List<Absence> absences = _absenceRepository.GetAbsencesForReferee(_myRefereeAccount.Id).ToList();
             foreach (Absence absence in absences)
             {
-                absenceDates.Add(absence.Date);
+                absenceDates.Add(absence.StartDate);
             }
 
             return absenceDates;
@@ -84,7 +84,7 @@ namespace SudisIm.Desktop.Controllers
         internal void AddAbsence()
         {
             Absence absence = new Absence();
-            absence.Date = _addAbsenceWindow.DatePicker.SelectedDate.Value;
+            absence.StartDate = _addAbsenceWindow.DatePicker.SelectedDate.Value;
             absence.Excuse = _addAbsenceWindow.Excuse.Text;
             absence.Referee = _myRefereeAccount;
             _absenceRepository.AddAbsence(absence);
