@@ -1,11 +1,10 @@
-﻿using System.Linq;
+﻿using System;
 using System.Web.Mvc;
 using NHibernate;
 using SudisIm.DAL.NHibernate;
 using SudisIm.DAL.Repositories;
+using SudisIm.Model.Models;
 using SudisIm.Model.Repositories;
-using SudisIm.Models.Calendar;
-using SudisIm.Services.Users;
 
 namespace SudisIm.Controllers
 {
@@ -13,6 +12,7 @@ namespace SudisIm.Controllers
     {
         private readonly IGameRepository gameRepository;
         private readonly IRefereeRepository refereeRepository;
+        private readonly IAbsenceRepository absenceRepository;
 
         #region Constructors
         public AbsenceController()
@@ -20,13 +20,14 @@ namespace SudisIm.Controllers
         { }
 
         public AbsenceController(ISession session)
-            : this(new GameRepository(session),  new RefereeRepository(session))
+            : this(new GameRepository(session),  new RefereeRepository(session), new AbsenceRepository(session))
         { }
 
-        public AbsenceController(IGameRepository gameRepo, IRefereeRepository refereeRepo)
+        public AbsenceController(IGameRepository gameRepo, IRefereeRepository refereeRepo, IAbsenceRepository absenceRepository)
         {
             this.gameRepository = gameRepo;
             this.refereeRepository = refereeRepo;
+            this.absenceRepository = absenceRepository;
         }
 
         #endregion /Constructors
@@ -37,6 +38,33 @@ namespace SudisIm.Controllers
             var referee = this.refereeRepository.GetRefereeByUser(User.Identity.Name);
 
             return View(referee.Absences);
+        }
+
+        [Authorize(Roles = "referee")]
+        // GET: Absence/Create
+        public ActionResult Create()
+        {
+            var absence = new Absence()
+            {
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(1)
+            };
+            return View(absence);
+        }
+
+        [Authorize(Roles = "referee")]
+        // GET: Absence/Create
+
+        [HttpPost]
+        public ActionResult Create(Absence newAbsence)
+        {
+            // Assign referee
+            var referee = this.refereeRepository.GetRefereeByUser(User.Identity.Name);
+            newAbsence.Referee = referee;
+
+            this.absenceRepository.AddAbsence(newAbsence);
+
+            return RedirectToAction("Index");
         }
     }
 }
