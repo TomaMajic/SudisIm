@@ -43,5 +43,12 @@ namespace SudisIm.DAL.Repositories
             this.session.Flush();
             return absence;
         }
+        public Absence RemoveAbsence(long absenceId)
+        {
+            var absence = this.GetAbsenceById(absenceId);
+            this.session.Delete(absence);
+            this.session.Flush();
+            return absence;
+        }
     }
 }

@@ -320,6 +320,7 @@
     <Content Include="Views\Games\Create.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Absence\Index.cshtml" />
+    <Content Include="Views\Absence\Create.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
