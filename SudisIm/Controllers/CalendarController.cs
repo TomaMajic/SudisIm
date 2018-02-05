@@ -12,28 +12,20 @@ namespace SudisIm.Controllers
     public class CalendarController : Controller
     {
         private readonly IGameRepository gameRepository;
-        private readonly IUserService userService;
-        private readonly ILicenceRepository licenceRepository;
-        private readonly ITeamRepository teamRepository;
         private readonly IRefereeRepository refereeRepository;
-        private readonly ICityRepository cityRepository;
         #region Constructors
         public CalendarController()
             : this(NHibernateHelper.Instance.OpenSession())
         { }
 
         public CalendarController(ISession session)
-            : this(new GameRepository(session), new UserService(session), new LicenceRepository(session), new TeamRepository(session), new RefereeRepository(session), new CityRepository(session))
+            : this(new GameRepository(session), new RefereeRepository(session))
         { }
 
-        public CalendarController(IGameRepository gameRepo, IUserService userService, ILicenceRepository licenceRepo, ITeamRepository teamRepo, IRefereeRepository refereeRepo, ICityRepository cityRepo)
+        public CalendarController(IGameRepository gameRepo, IRefereeRepository refereeRepo)
         {
-            this.userService = userService;
             this.gameRepository = gameRepo;
-            this.licenceRepository = licenceRepo;
-            this.teamRepository = teamRepo;
             this.refereeRepository = refereeRepo;
-            this.cityRepository = cityRepo;
         }
 
         #endregion /Constructors

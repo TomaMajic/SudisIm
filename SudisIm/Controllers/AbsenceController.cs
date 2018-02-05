@@ -10,7 +10,6 @@ namespace SudisIm.Controllers
 {
     public class AbsenceController : Controller
     {
-        private readonly IGameRepository gameRepository;
         private readonly IRefereeRepository refereeRepository;
         private readonly IAbsenceRepository absenceRepository;
 
@@ -20,12 +19,11 @@ namespace SudisIm.Controllers
         { }
 
         public AbsenceController(ISession session)
-            : this(new GameRepository(session),  new RefereeRepository(session), new AbsenceRepository(session))
+            : this(new RefereeRepository(session), new AbsenceRepository(session))
         { }
 
-        public AbsenceController(IGameRepository gameRepo, IRefereeRepository refereeRepo, IAbsenceRepository absenceRepository)
+        public AbsenceController(IRefereeRepository refereeRepo, IAbsenceRepository absenceRepository)
         {
-            this.gameRepository = gameRepo;
             this.refereeRepository = refereeRepo;
             this.absenceRepository = absenceRepository;
         }
