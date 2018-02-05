@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SudisIm.Desktop.Controllers;
+using SudisIm.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,9 +23,20 @@ namespace SudisIm.Desktop
     public partial class RefereeWindow : Window
     {
         private bool shutDownApplication = true;
-        public RefereeWindow()
+        private List<DateTime> absenceDates;
+        private List<DateTime> gameDates;
+        private Referee _myRefereeAccount;
+        private RefereeController _refereeController;
+        public RefereeWindow(Referee myRefereeAccount)
         {
             InitializeComponent();
+
+            _myRefereeAccount = myRefereeAccount;
+            _refereeController = new RefereeController(this, _myRefereeAccount);
+
+            absenceDates = _refereeController.GetAbsenceDates();
+            gameDates = _refereeController.GetGameDates();
+            _refereeController.LoadExcuses();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -42,6 +56,49 @@ namespace SudisIm.Desktop
             this.shutDownApplication = false;
             this.Close();
             mainWindow.Show();
+        }
+
+
+        //kalendar
+        private void calendarButton_Loaded(object sender, EventArgs e)
+        {
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
+            button.DataContextChanged += new DependencyPropertyChangedEventHandler(calendarButton_DataContextChanged);
+        }
+
+        private void HighlightDay(CalendarDayButton button, DateTime date)
+        {
+            if (absenceDates.Contains(date))
+            {
+                button.Background = Brushes.PaleVioletRed;
+            }
+            else if (gameDates.Contains(date))
+            {
+                button.Background = Brushes.LightBlue;
+            }
+            else
+            {
+                button.Background = Brushes.White;
+            }
+        }
+
+        private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
+        }
+
+        private void AddAbsence_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _refereeController.OpenAddAbsenceWindow();
+        }
+
+        private void Edit_Referee_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _refereeController.OpenEditRefereeWindow();
         }
     }
 }

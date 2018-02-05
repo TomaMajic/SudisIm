@@ -37,6 +37,7 @@
     <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="NHibernate, Version=5.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.5.0.0\lib\net461\NHibernate.dll</HintPath>
     </Reference>
@@ -63,15 +64,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAbsenceWindow.xaml.cs">
+      <DependentUpon>AddAbsenceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\RefereeController.cs" />
     <Compile Include="EditAdminAccountWindow.xaml.cs">
       <DependentUpon>EditAdminAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditRefereeWindow.xaml.cs">
+      <DependentUpon>EditRefereeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RefereeWindow.xaml.cs">
       <DependentUpon>RefereeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\RefereeViewModel.cs" />
+    <Page Include="AddAbsenceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditAdminAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditRefereeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

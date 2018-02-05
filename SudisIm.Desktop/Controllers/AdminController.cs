@@ -269,17 +269,17 @@ namespace SudisIm.Desktop.Controllers
             }
         }
 
-        public List<DateTime> GetGamesDates()
+        public List<DateTime> GetGameDates()
         {
-            List<DateTime> dates = new List<DateTime>();
+            List<DateTime> gameDates = new List<DateTime>();
 
             List<Game> games = _gameRepository.GetGames().ToList();
             foreach (Game game in games)
             {
-                dates.Add(game.StartTime);
+                gameDates.Add(game.StartTime);
             }
 
-            return dates;
+            return gameDates;
         }
     }
 }

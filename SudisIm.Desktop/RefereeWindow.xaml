@@ -11,7 +11,13 @@
             <TabItem Header="Kalendar">
                 <Grid Background="#FFE5E5E5">
                     <Viewbox>
-                        <Calendar Height="200" Width="200" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                        <Calendar Name="refereeCalendar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="200">
+                            <Calendar.CalendarDayButtonStyle>
+                                <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
+                                    <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />
+                                </Style>
+                            </Calendar.CalendarDayButtonStyle>
+                        </Calendar>
                     </Viewbox>
                 </Grid>
             </TabItem>
@@ -19,12 +25,22 @@
             <TabItem Header="Odsutnost">
                 <Grid Background="#FFE5E5E5">
 
+                    <DataGrid Name="absenceDataGrid" Margin="40,70,40,40" ItemsSource="{Binding}" RowHeaderWidth="0">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*"  Header="Datum" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Width="*" Header="Razlog" Binding="{Binding Excuse}"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Button Content="Dodaj novu odsutnost" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Width="136" Click="AddAbsence_Button_Click"/>
+
                 </Grid>
             </TabItem>
 
         </TabControl>
         <Button Content="Odjava" Margin="0,2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Button_Click"/>
-        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
+        <Button Content="Uredi korisnički račun" Margin="0,2,85,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130" Click="Edit_Referee_Button_Click"/>
 
     </Grid>
 </Window>

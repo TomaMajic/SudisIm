@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SudisIm.DAL.NHibernate;
+using System.Windows;
 using SudisIm.Services.Users;
 
 namespace SudisIm.Desktop
@@ -14,34 +15,37 @@ namespace SudisIm.Desktop
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            //if (UserService.HasClaim(username, password, "admin"))
-            //{
-                
-            //}
-            // ako je registrirani korisnik administrator
-            AdminWindow adminWindow = new AdminWindow();
-            adminWindow.Top = this.Top;
-            adminWindow.Left = this.Left;
-            App.Current.MainWindow = adminWindow;
-            shutDownApplication = false;
-            this.Close();
-            adminWindow.Show();
+            try
+            {
+                if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "admin"))
+                {
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.Top = this.Top;
+                    adminWindow.Left = this.Left;
+                    App.Current.MainWindow = adminWindow;
+                    shutDownApplication = false;
+                    this.Close();
+                    adminWindow.Show();
+                }
 
-            //if (UserService.HasClaim(username, password, "referee"))
-            //{
-
-            //}
-            //// ako je registrirani korisnik sudac
-            //RefereeWindow refereeWindow = new RefereeWindow();
-            //refereeWindow.Top = this.Top;
-            //refereeWindow.Left = this.Left;
-            //App.Current.MainWindow = refereeWindow;
-            //this.shutDownApplication = false;
-            //this.Close();
-            //refereeWindow.Show();
-
+                if (UserService.HasClaim(emailTextBox.Text, passwordTextBox.Password, "referee"))
+                {
+                    UserService userService = new UserService(NHibernateHelper.Instance.OpenSession());
+                    RefereeWindow refereeWindow = new RefereeWindow(userService.GetRefereeByUser(emailTextBox.Text, passwordTextBox.Password));
+                    refereeWindow.Top = this.Top;
+                    refereeWindow.Left = this.Left;
+                    App.Current.MainWindow = refereeWindow;
+                    this.shutDownApplication = false;
+                    this.Close();
+                    refereeWindow.Show();
+                }
+            }
+            catch
+            {
+                errorLabel.Content = "Pogrešno korisničko ime ili lozinka!";
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
