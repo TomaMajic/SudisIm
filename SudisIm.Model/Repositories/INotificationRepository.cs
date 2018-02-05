@@ -8,5 +8,6 @@ namespace SudisIm.Model.Repositories
         Notification GetNotificationById(long notificationId);
         ICollection<Notification> GetNotifications();
         Notification AddNotification(Notification notification);
+        ICollection<Notification> GetNotificationsForReferee(long refereeId);
     }
 }

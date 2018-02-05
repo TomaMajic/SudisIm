@@ -30,6 +30,11 @@ namespace SudisIm.DAL.Repositories
             return this.session.Query<Notification>().ToList();
         }
 
+        public ICollection<Notification> GetNotificationsForReferee(long refereeId)
+        {
+            return this.session.Query<Notification>().Where(n => n.Referee.Id == refereeId).ToList();
+        }
+
         public Notification AddNotification(Notification notification)
         {
             session.SaveOrUpdate(notification);
