@@ -1,0 +1,87 @@
+﻿@model SudisIm.Models.Games.GameCreateViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Stvaranje utakmice";
+}
+
+<h2>Stvori utakmicu</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group row">
+        <label class="col-sm-2" for="home-selector">Domaći</label>
+        @Html.DropDownListFor(model => model.Game.HomeTeam, Model.Teams.Select(t => new SelectListItem()
+        {
+            Value = t.Id.ToString(),
+            Text = t.Name
+        }), "Odaberite domaćina", new { @class = "form-control col-sm-10", id = "home-selector" })
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2" for="away-selector">Gosti</label>
+        @Html.DropDownListFor(model => model.Game.HomeTeam, Model.Teams.Select(t => new SelectListItem()
+        {
+            Value = t.Id.ToString(),
+            Text = t.Name
+        }), "Odaberite gosta", new { @class = "form-control col-sm-10", id = "away-selector" })
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2">Datum</label>
+        <div class='input-group date col-sm-3' id='datetimepicker1'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">Adresa</label>
+        @Html.TextBoxFor(g => g.Game.Address, new { @class = "form-control col-sm-10" })
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">Grad</label>
+        @Html.DropDownListFor(model => model.Game.City, Model.Cities.Select(t => new SelectListItem()
+        {
+            Value = t.Id.ToString(),
+            Text = t.Name
+        }), "Odaberite grad", new { @class = "form-control col-sm-10" })
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2">Broj sudaca</label>
+        @Html.EditorFor(model => model.Game.NoOfReferees,
+                      new
+                      {
+                          htmlAttributes = new { type = "number", min = "1", max = "10", value="1", @class = "form-control" }
+                      })
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2">Sudac</label>
+        @Html.DropDownListFor(model => model.Referees, Model.Referees.Select(t => new SelectListItem()
+        {
+            Value = t.Id.ToString(),
+            Text = t.FirstName + " " + t.LastName
+        }), "Odaberite suca", new { @class = "form-control col-sm-10" })
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

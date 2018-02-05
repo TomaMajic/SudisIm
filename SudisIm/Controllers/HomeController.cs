@@ -1,54 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
+﻿using System.Web.Mvc;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
-using SudisIm.Models;
+using SudisIm.DAL.NHibernate;
+using SudisIm.DAL.Repositories;
+using SudisIm.Model.Repositories;
 
 namespace SudisIm.Controllers
 {
     public class HomeController : Controller
     {
-        private ISessionFactory _sessionFactory;
-        public ActionResult Index()
+        private readonly IGameRepository gameRepository;
+        private readonly ISession session;
+        #region Constructors
+        public HomeController()
+            : this(NHibernateHelper.Instance.OpenSession())
+        { }
+
+        public HomeController(ISession session)
+            : this(new GameRepository(session))
         {
-            ////creating database 
-            ////string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            ////CreateDatabase(connectionString);
-            ////Console.WriteLine("Database Created sucessfully");
-
-            ////creating a object of customer
-            //Customer customer = new Customer
-            //{
-            //    CustomerId = 2,
-            //    FirstName = "Jalpesh2",
-            //    LastName = "Vadgama2"
-            //};
-
-            ////saving customer in database.
-            //using (ISession session = NHibernateHelper.Instance.OpenSession())
-            //    session.Save(customer);
-
-            //Console.WriteLine("Customer Saved");
-            return View();
+            this.session = session;
         }
 
-        void CreateDatabase(string connectionString)
+        public HomeController(IGameRepository gameRepository)
         {
-            var configuration = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CustomerMap>())
-                .BuildConfiguration();
+            this.gameRepository = gameRepository;
+        }
 
-            var exporter = new SchemaExport(configuration);
-            exporter.Execute(true, true, false);
+        #endregion /Constructors
 
-            _sessionFactory = configuration.BuildSessionFactory();
+        public ActionResult Index()
+        {
+            return View(this.gameRepository.GetGames());
         }
 
         public ActionResult About()

@@ -2,8 +2,17 @@
 {
     public class Team
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public long CityId { get; set;}
+        public Team()
+        {}
+
+        public Team(string name, City city)
+        {
+            this.Name = name;
+            this.City = city;
+        }
+
+        public virtual long Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual City City { get; set; }
     }
 }

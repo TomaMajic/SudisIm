@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SudisIm.Model.Models.Game>
+@{
+    ViewBag.Title = "Utakmice";
+}
+<div class="container" style="padding-top: 20px">
+    <div class="row">
+        <button class="btn btn-success">Dodaj utakmicu</button>
+    </div>
+    <div class="row">
+        <table class="table table-hover" id="games-table">
+            <thead>
+            <tr>
+            <th hidden>Id</th>
+            <th>Domaći</th>
+            <th>Gosti</th>
+            <th>Datum</th>
+            <th>Adresa</th>
+            <th>Mjesto</th>
+            <th>Licenca</th>
+            <th>Suci</th>
+            </thead>
+            <tbody>
+            @foreach (var game in Model)
+            {
+                <tr style="cursor: pointer">
+                    <td hidden>@game.Id</td>
+                    <td>@game.HomeTeam.Name</td>
+                    <td>@game.AwayTeam.Name</td>
+                    <td>@game.GetFormatedStartTime()</td>
+                    <td>@game.Address</td>
+                    <td>@game.City.Name</td>
+                    <td>@game.MinimalLicence.Name</td>
+                    <td>@game.GetRefereeCount() / @game.NoOfReferees</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Styles.Render("~/bundles/css/datatables")
+
+@section scripts{
+    @Scripts.Render("~/bundles/js/datatables")
+
+    <script src="~/Scripts/Games/index.js"></script>
+}

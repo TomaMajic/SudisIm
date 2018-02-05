@@ -5,15 +5,39 @@ namespace SudisIm.Model.Models
 {
     public class Game
     {
-        public long Id { get; set; }
-        public long HomeTeamId { get; set; }
-        public long AwayTeamId { get; set; }
-        public DateTime StartTime { get; set; }
-        public ICollection<Referee> Referees { get; set; }
-        public string Address { get; set; }
-        public long CityId { get; set; }
+        public Game()
+        {
+            this.Referees = new List<Referee>();
+        }
+        
+        public virtual long Id { get; set; }
+        public virtual Team HomeTeam { get; set; }
+        public virtual Team AwayTeam { get; set; }
+        public virtual DateTime StartTime { get; set; }
+        public virtual ICollection<Referee> Referees { get; set; }
+        public virtual string Address { get; set; }
+        public virtual Licence MinimalLicence { get; set; }
+        public virtual int NoOfReferees { get; set; }
+        public virtual City City { get; set; }
 
-        // TODO: navigacijski propertyi za timove i city
+        public virtual int GetRefereeCount()
+        {
+            return this.Referees.Count;
+        }
 
+        public virtual string GetFormatedStartTime()
+        {
+            return $"{this.StartTime:dddd, MM.dd.yyyy}";
+        }
+
+        public virtual string GetGameTitle()
+        {
+            return $"{this.HomeTeam.Name} vs {this.AwayTeam.Name}";
+        }
+
+        public virtual string GetLocation()
+        {
+            return $"{this.Address}, {this.City.Name}";
+        }
     }
 }

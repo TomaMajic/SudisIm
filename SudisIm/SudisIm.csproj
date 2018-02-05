@@ -49,7 +49,6 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -203,16 +202,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AbsenceController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Calendar\CalendarEventDto.cs" />
+    <Compile Include="Models\Calendar\RefereeCalendarViewModel.cs" />
     <Compile Include="Models\CustomerMap.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Games\GameCreateViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -223,12 +227,48 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Plugins\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Plugins\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Plugins\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Plugins\DataTables\images\sort_asc.png" />
+    <Content Include="Plugins\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Plugins\DataTables\images\sort_both.png" />
+    <Content Include="Plugins\DataTables\images\sort_desc.png" />
+    <Content Include="Plugins\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap4.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.foundation.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.foundation.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.jqueryui.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.semanticui.js" />
+    <Content Include="Plugins\DataTables\js\dataTables.semanticui.min.js" />
+    <Content Include="Plugins\DataTables\js\jquery.dataTables.js" />
+    <Content Include="Plugins\DataTables\js\jquery.dataTables.min.js" />
+    <Content Include="Plugins\full-calendar\css\fullcalendar.min.css" />
+    <Content Include="Plugins\full-calendar\js\fullcalendar.min.js" />
+    <Content Include="Plugins\full-calendar\js\locale-all.js" />
+    <Content Include="Plugins\full-calendar\js\moment.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Calendar\index.js" />
+    <Content Include="Scripts\Absence\index.js" />
+    <Content Include="Scripts\Games\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -275,6 +315,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\Absence\Index.cshtml" />
+    <Content Include="Views\Absence\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,9 +338,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SudisIm.DAL\SudisIm.DAL.csproj">
+      <Project>{9C613D63-4D7E-428D-94F4-5D8D70165A7B}</Project>
+      <Name>SudisIm.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SudisIm.Model\SudisIm.Model.csproj">
       <Project>{AEEF7C1D-3481-4539-A83F-D0C3709B4554}</Project>
       <Name>SudisIm.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudisIm.Services\SudisIm.Services.csproj">
+      <Project>{FF0BA6B1-FAEE-4EE5-8321-ED75BA3080FC}</Project>
+      <Name>SudisIm.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

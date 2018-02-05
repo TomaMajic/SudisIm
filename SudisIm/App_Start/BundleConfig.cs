@@ -26,6 +26,30 @@ namespace SudisIm
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            #region Plugins
+            #region DataTable
+            bundles.Add(new StyleBundle("~/bundles/css/datatables").Include(
+                "~/Plugins/DataTables/css/dataTables.bootstrap.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/datatables").Include(
+                "~/Plugins/DataTables/js/jquery.dataTables.min.js",
+                "~/Plugins/DataTables/js/dataTables.bootstrap.min.js"));
+
+            #endregion /DataTable
+
+            #region full-calendar
+            bundles.Add(new StyleBundle("~/bundles/css/full-calendar").Include(
+                "~/Plugins/full-calendar/css/fullcalendar.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/full-calendar").Include(
+                "~/Plugins/full-calendar/js/moment.min.js",
+                "~/Plugins/full-calendar/js/fullcalendar.min.js",
+                "~/Plugins/full-calendar/js/locale-all.js"));
+
+            #endregion /fukl-calendar
+
+            #endregion /Plugins
         }
     }
 }

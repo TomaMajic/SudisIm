@@ -1,14 +1,30 @@
-﻿namespace SudisIm.Model.Models
+﻿using System.Collections.Generic;
+
+namespace SudisIm.Model.Models
 {
     public class Referee
     {
-        public long Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public bool IsDeleted { get; set; }
-        public string Description { get; set; }
-        public long LicenceId { get; set; }
-        // TODO: Dodaj ref na city i licence
+        public Referee()
+        {}
+
+        public Referee(string firstName, string lastName, Licence licence)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Licence = licence;
+        }
+
+        public virtual long Id { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string Address { get; set; }
+        public virtual bool IsDeleted { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string Contact { get; set; }
+        public virtual Licence Licence { get; set; }
+       
+        public virtual City City { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public virtual ICollection<Absence> Absences { get; set; }
     }
 }
